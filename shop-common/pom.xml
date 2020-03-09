@@ -11,6 +11,7 @@
     <modules>
         <module>shop-entity</module>
         <module>shop-mapper</module>
+        <module>shop-basic</module>
     </modules>
 
 

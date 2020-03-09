@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.TGoodsInfoMapper">
+  <resultMap id="BaseResultMap" type="entity.TGoodsInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_description" jdbcType="VARCHAR" property="goodsDescription" />
+    <result column="goods_pic" jdbcType="VARCHAR" property="goodsPic" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_price_off" jdbcType="DOUBLE" property="goodsPriceOff" />
+    <result column="goods_discount" jdbcType="DOUBLE" property="goodsDiscount" />
+    <result column="goods_fatherid" jdbcType="INTEGER" property="goodsFatherid" />
+    <result column="goods_parentid" jdbcType="INTEGER" property="goodsParentid" />
+    <result column="isdelete" jdbcType="VARCHAR" property="isdelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off, 
+    goods_discount, goods_fatherid, goods_parentid, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.TGoodsInfo">
+    insert into t_goods_info (id, goods_name, goods_description, 
+      goods_pic, goods_price, goods_stock, 
+      goods_price_off, goods_discount, goods_fatherid, 
+      goods_parentid, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR}, 
+      #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER}, 
+      #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER}, 
+      #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.TGoodsInfo">
+    insert into t_goods_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsDescription != null">
+        goods_description,
+      </if>
+      <if test="goodsPic != null">
+        goods_pic,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsStock != null">
+        goods_stock,
+      </if>
+      <if test="goodsPriceOff != null">
+        goods_price_off,
+      </if>
+      <if test="goodsDiscount != null">
+        goods_discount,
+      </if>
+      <if test="goodsFatherid != null">
+        goods_fatherid,
+      </if>
+      <if test="goodsParentid != null">
+        goods_parentid,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null">
+        #{goodsDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null">
+        #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsStock != null">
+        #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPriceOff != null">
+        #{goodsPriceOff,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null">
+        #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsFatherid != null">
+        #{goodsFatherid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsParentid != null">
+        #{goodsParentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.TGoodsInfo">
+    update t_goods_info
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null">
+        goods_description = #{goodsDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null">
+        goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsStock != null">
+        goods_stock = #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPriceOff != null">
+        goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null">
+        goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsFatherid != null">
+        goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsParentid != null">
+        goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.TGoodsInfo">
+    update t_goods_info
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_description = #{goodsDescription,jdbcType=VARCHAR},
+      goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+      goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+      goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+      goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="entity.TGoodsInfo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_description" jdbcType="VARCHAR" property="goodsDescription" />
+    <result column="goods_pic" jdbcType="VARCHAR" property="goodsPic" />
+    <result column="goods_price" jdbcType="DOUBLE" property="goodsPrice" />
+    <result column="goods_stock" jdbcType="INTEGER" property="goodsStock" />
+    <result column="goods_price_off" jdbcType="DOUBLE" property="goodsPriceOff" />
+    <result column="goods_discount" jdbcType="DOUBLE" property="goodsDiscount" />
+    <result column="goods_fatherid" jdbcType="INTEGER" property="goodsFatherid" />
+    <result column="goods_parentid" jdbcType="INTEGER" property="goodsParentid" />
+    <result column="isdelete" jdbcType="VARCHAR" property="isdelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off, 
+    goods_discount, goods_fatherid, goods_parentid, isdelete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_goods_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_goods_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="entity.TGoodsInfo">
+    insert into t_goods_info (id, goods_name, goods_description, 
+      goods_pic, goods_price, goods_stock, 
+      goods_price_off, goods_discount, goods_fatherid, 
+      goods_parentid, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR}, 
+      #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER}, 
+      #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER}, 
+      #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="entity.TGoodsInfo">
+    insert into t_goods_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsDescription != null">
+        goods_description,
+      </if>
+      <if test="goodsPic != null">
+        goods_pic,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsStock != null">
+        goods_stock,
+      </if>
+      <if test="goodsPriceOff != null">
+        goods_price_off,
+      </if>
+      <if test="goodsDiscount != null">
+        goods_discount,
+      </if>
+      <if test="goodsFatherid != null">
+        goods_fatherid,
+      </if>
+      <if test="goodsParentid != null">
+        goods_parentid,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null">
+        #{goodsDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null">
+        #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsStock != null">
+        #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPriceOff != null">
+        #{goodsPriceOff,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null">
+        #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsFatherid != null">
+        #{goodsFatherid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsParentid != null">
+        #{goodsParentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="entity.TGoodsInfo">
+    update t_goods_info
+    <set>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsDescription != null">
+        goods_description = #{goodsDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPic != null">
+        goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsStock != null">
+        goods_stock = #{goodsStock,jdbcType=INTEGER},
+      </if>
+      <if test="goodsPriceOff != null">
+        goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsDiscount != null">
+        goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsFatherid != null">
+        goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+      </if>
+      <if test="goodsParentid != null">
+        goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="entity.TGoodsInfo">
+    update t_goods_info
+    set goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_description = #{goodsDescription,jdbcType=VARCHAR},
+      goods_pic = #{goodsPic,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DOUBLE},
+      goods_stock = #{goodsStock,jdbcType=INTEGER},
+      goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+      goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+      goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+      goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+      isdelete = #{isdelete,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
