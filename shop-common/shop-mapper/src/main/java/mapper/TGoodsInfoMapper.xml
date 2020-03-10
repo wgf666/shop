@@ -15,11 +15,11 @@
     <result column="isdelete" jdbcType="VARCHAR" property="isdelete" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off, 
+    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off,
     goods_discount, goods_fatherid, goods_parentid, isdelete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_goods_info
     where id = #{id,jdbcType=INTEGER}
@@ -29,14 +29,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="entity.TGoodsInfo">
-    insert into t_goods_info (id, goods_name, goods_description, 
-      goods_pic, goods_price, goods_stock, 
-      goods_price_off, goods_discount, goods_fatherid, 
-      goods_parentid, isdelete)
-    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR}, 
-      #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER}, 
-      #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER}, 
-      #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
+    insert into t_goods_info (id, goods_name, goods_description,
+    goods_pic, goods_price, goods_stock,
+    goods_price_off, goods_discount, goods_fatherid,
+    goods_parentid, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR},
+    #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER},
+    #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER},
+    #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="entity.TGoodsInfo">
     insert into t_goods_info
@@ -150,15 +150,15 @@
   <update id="updateByPrimaryKey" parameterType="entity.TGoodsInfo">
     update t_goods_info
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_description = #{goodsDescription,jdbcType=VARCHAR},
-      goods_pic = #{goodsPic,jdbcType=VARCHAR},
-      goods_price = #{goodsPrice,jdbcType=DOUBLE},
-      goods_stock = #{goodsStock,jdbcType=INTEGER},
-      goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
-      goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
-      goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
-      goods_parentid = #{goodsParentid,jdbcType=INTEGER},
-      isdelete = #{isdelete,jdbcType=VARCHAR}
+    goods_description = #{goodsDescription,jdbcType=VARCHAR},
+    goods_pic = #{goodsPic,jdbcType=VARCHAR},
+    goods_price = #{goodsPrice,jdbcType=DOUBLE},
+    goods_stock = #{goodsStock,jdbcType=INTEGER},
+    goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+    goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+    goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+    goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+    isdelete = #{isdelete,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <resultMap id="BaseResultMap" type="entity.TGoodsInfo">
@@ -175,11 +175,11 @@
     <result column="isdelete" jdbcType="VARCHAR" property="isdelete" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off, 
+    id, goods_name, goods_description, goods_pic, goods_price, goods_stock, goods_price_off,
     goods_discount, goods_fatherid, goods_parentid, isdelete
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from t_goods_info
     where id = #{id,jdbcType=INTEGER}
@@ -189,14 +189,14 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="entity.TGoodsInfo">
-    insert into t_goods_info (id, goods_name, goods_description, 
-      goods_pic, goods_price, goods_stock, 
-      goods_price_off, goods_discount, goods_fatherid, 
-      goods_parentid, isdelete)
-    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR}, 
-      #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER}, 
-      #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER}, 
-      #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
+    insert into t_goods_info (id, goods_name, goods_description,
+    goods_pic, goods_price, goods_stock,
+    goods_price_off, goods_discount, goods_fatherid,
+    goods_parentid, isdelete)
+    values (#{id,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsDescription,jdbcType=VARCHAR},
+    #{goodsPic,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DOUBLE}, #{goodsStock,jdbcType=INTEGER},
+    #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER},
+    #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="entity.TGoodsInfo">
     insert into t_goods_info
@@ -310,15 +310,15 @@
   <update id="updateByPrimaryKey" parameterType="entity.TGoodsInfo">
     update t_goods_info
     set goods_name = #{goodsName,jdbcType=VARCHAR},
-      goods_description = #{goodsDescription,jdbcType=VARCHAR},
-      goods_pic = #{goodsPic,jdbcType=VARCHAR},
-      goods_price = #{goodsPrice,jdbcType=DOUBLE},
-      goods_stock = #{goodsStock,jdbcType=INTEGER},
-      goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
-      goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
-      goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
-      goods_parentid = #{goodsParentid,jdbcType=INTEGER},
-      isdelete = #{isdelete,jdbcType=VARCHAR}
+    goods_description = #{goodsDescription,jdbcType=VARCHAR},
+    goods_pic = #{goodsPic,jdbcType=VARCHAR},
+    goods_price = #{goodsPrice,jdbcType=DOUBLE},
+    goods_stock = #{goodsStock,jdbcType=INTEGER},
+    goods_price_off = #{goodsPriceOff,jdbcType=DOUBLE},
+    goods_discount = #{goodsDiscount,jdbcType=DOUBLE},
+    goods_fatherid = #{goodsFatherid,jdbcType=INTEGER},
+    goods_parentid = #{goodsParentid,jdbcType=INTEGER},
+    isdelete = #{isdelete,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

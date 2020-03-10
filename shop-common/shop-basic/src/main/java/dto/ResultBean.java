@@ -107,7 +107,14 @@ public class ResultBean implements Serializable {
 
 
 
+    public ResultBean(int errno, Object data, String message) {
+        this.errno = errno;
+        this.data = data;
+        this.message = message;
+    }
 
+    public ResultBean() {
+    }
 
     public int getErrno() {
         return errno;
