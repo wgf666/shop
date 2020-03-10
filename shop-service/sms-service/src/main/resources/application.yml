@@ -1,1 +1,27 @@
-
+spring:
+  rabbitmq:
+    host: 192.168.174.128
+    port: 5672
+    username: guest
+    password: guest
+    virtual-host: /
+  application:
+    name: sms-service
+server:
+  port: 8001
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+redis:
+  host: 192.168.174.128
+  port: 6688
+  jedis:
+    pool:
+      max-active: 20
+sms:
+  account: JSM42639
+  password: l43d7myq
+  veryCode: irnsloy2kjhd
+  http_url: http://112.74.76.186:8030
+  tplId: JSM42639-0001
