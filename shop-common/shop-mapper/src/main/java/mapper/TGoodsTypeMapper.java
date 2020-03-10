@@ -2,6 +2,8 @@ package mapper;
 
 import entity.TGoodsType;
 
+import java.util.List;
+
 public interface TGoodsTypeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -10,6 +12,8 @@ public interface TGoodsTypeMapper {
     int insertSelective(TGoodsType record);
 
     TGoodsType selectByPrimaryKey(Integer id);
+
+    List<TGoodsType> selectAll();
 
     int updateByPrimaryKeySelective(TGoodsType record);
 
