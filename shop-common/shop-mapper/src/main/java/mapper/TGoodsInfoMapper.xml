@@ -24,6 +24,7 @@
     from t_goods_info
     where id = #{id,jdbcType=INTEGER}
   </select>
+<<<<<<< .mine
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_goods_info
     where id = #{id,jdbcType=INTEGER}
@@ -180,10 +181,168 @@
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select
+=======
+  <select id="selectAll" resultType="list" resultMap="BaseResultMap">
+    select
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
     <include refid="Base_Column_List" />
     from t_goods_info
-    where id = #{id,jdbcType=INTEGER}
   </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from t_goods_info
     where id = #{id,jdbcType=INTEGER}

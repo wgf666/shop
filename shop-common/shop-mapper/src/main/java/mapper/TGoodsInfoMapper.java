@@ -2,6 +2,8 @@ package mapper;
 
 import entity.TGoodsInfo;
 
+import java.util.List;
+
 public interface TGoodsInfoMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -11,7 +13,11 @@ public interface TGoodsInfoMapper {
 
     TGoodsInfo selectByPrimaryKey(Integer id);
 
+    List<TGoodsInfo> selectAll();
+
     int updateByPrimaryKeySelective(TGoodsInfo record);
 
     int updateByPrimaryKey(TGoodsInfo record);
+
+
 }

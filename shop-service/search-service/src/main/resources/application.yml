@@ -1,1 +1,19 @@
+server:
+  port: 8030
 
+spring:
+  application:
+    name: search-service
+  data:
+    solr:
+      host: http://192.168.116.131:8983/solr/ik_core
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop
+    username: root
+    password: 123
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/

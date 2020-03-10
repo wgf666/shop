@@ -103,6 +103,7 @@
     isdefault = #{isdefault,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+<<<<<<< .mine
   <resultMap id="BaseResultMap" type="entity.TAddress">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="shouhuoren" jdbcType="VARCHAR" property="shouhuoren" />
@@ -205,4 +206,108 @@
     isdefault = #{isdefault,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+=======
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> .theirs
 </mapper>
