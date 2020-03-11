@@ -1,7 +1,7 @@
 package cart.service.vo;
 
 
-import entity.TProduct;
+import entity.TGoodsInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CartItemVO implements Serializable{
-    private TProduct product;
+    private TGoodsInfo goodsInfo;
     private Integer count;
     private Date updateTime;
 

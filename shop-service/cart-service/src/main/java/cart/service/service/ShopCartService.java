@@ -1,6 +1,5 @@
 package cart.service.service;
 
-import cart.service.pojo.CartItem;
 import dto.ResultBean;
 
 /**
@@ -10,10 +9,15 @@ import dto.ResultBean;
  */
 public interface ShopCartService {
 
-    //获取购物车集合
-    ResultBean  getShopcartList(String key);
 
-    //添加购物车
-    ResultBean  add(String key, CartItem cartItem);
+    ResultBean addProduct(String key, Long productId, Integer count);
+
+    ResultBean clean(String key, Long productId);
+
+    ResultBean update(String uuid, Long productId, Integer count);
+
+    ResultBean showCart(String key);
+
+    ResultBean merge(String noLoginKey, String loginKey);
 
 }
