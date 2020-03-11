@@ -20,7 +20,7 @@ import java.io.IOException;
 @Controller
 @RequestMapping("file")
 public class FileController {
-    @Autowired
+   /* @Autowired
     private FastFileStorageClient client;
     @Value("${image.server}")
     private String IMAGE_SERVER;
@@ -43,7 +43,7 @@ public class FileController {
             e.printStackTrace();
             return new ResultBean(500,"操作失败，请售后重新上传");
         }
-    }
+    }*/
 
    /* @ResponseBody
     @RequestMapping("multiUpload")

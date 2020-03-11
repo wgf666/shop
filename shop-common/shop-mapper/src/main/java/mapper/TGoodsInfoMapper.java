@@ -19,5 +19,7 @@ public interface TGoodsInfoMapper {
 
     int updateByPrimaryKey(TGoodsInfo record);
 
+    List<TGoodsInfo> list();
+
 
 }
