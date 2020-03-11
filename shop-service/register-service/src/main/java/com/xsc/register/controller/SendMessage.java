@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.UUID;
+
 @Controller
 @RequestMapping("/register")
 public class SendMessage {
@@ -26,6 +28,11 @@ public class SendMessage {
     @ResponseBody
     @RequestMapping("/mail")
     public ResultBean mail(String mail){
+        //1.生成uuid
+        String uuid = UUID.randomUUID().toString();
+
+
+
         rabbitTemplate.convertAndSend("qf.shop.mail",mail);
         ResultBean resultBean = new ResultBean();
         resultBean.setMessage("success");
