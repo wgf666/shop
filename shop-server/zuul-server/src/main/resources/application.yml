@@ -3,8 +3,32 @@ server:
 spring:
   application:
     name: zuul
+  thymeleaf:
+    cache: false
+    mode: LEGANCYHTML5
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+#    static:
+#      path: /static/**
+#      url: http://localhost:8770/static/
+    index:
+      path: /**
+      serviceId: index-web
+#      stripPrefix: false
+    search:
+      path: /search/**
+      serviceId: search-web
+      stripPrefix: false
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 10000   #socket超时
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000

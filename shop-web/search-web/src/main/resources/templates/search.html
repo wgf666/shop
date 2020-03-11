@@ -58,7 +58,7 @@
 
 				<div class="search-bar pr">
 					<a name="index_none_header_sysc" href="#"></a>
-					<form action="/wgf/search">
+					<form action="/search">
 						<input id="searchInput" th:value="${va}" name="index_none_header_sysc" type="text" placeholder="搜索" autocomplete="off">
 						<input id="ai-topsearch" class="submit am-btn"  value="搜索" index="1" type="submit">
 					</form>
@@ -175,7 +175,7 @@
 
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
                                     <!-- 内容-->
-									<li th:each="good:${goodsInfo}">
+									<li th:href="${''}" th:each="good:${goodsInfo}">
 										<div class="i-pic limit">
 											<img th:src="${'images/'+good.goodsPic}" src="images/imgsearch1.jpg" />
 											<p class="title fl" th:utext="${good.goodsName+'<br/>'+good.goodsDescription}">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>

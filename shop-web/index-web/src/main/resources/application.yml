@@ -1,1 +1,10 @@
+server:
+  port: 9031
+spring:
+  application:
+    name: index-web
 
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

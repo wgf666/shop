@@ -14,7 +14,7 @@ import search.web.service.ISearchService;
  * @Date: 2020/3/10 15:23
  */
 @Controller
-@RequestMapping("wgf")
+//@RequestMapping("wgf")
 public class SearchController {
 
     @Autowired
