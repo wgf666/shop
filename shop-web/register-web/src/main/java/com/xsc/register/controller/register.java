@@ -11,16 +11,21 @@ public class register {
     @Autowired
     private registerService registerService;
 
-    //feign调用
-    @RequestMapping("/sms")
-    public String sms(@RequestParam(value="phoneNumber") String phoneNumber){
-
-        return registerService.sendSms(phoneNumber);
-    }
-
     @RequestMapping("")
     public String register(){
         return "register";
-}
+    }
+
+    //feign调用
+    @RequestMapping("/sms")
+    public void sms(@RequestParam(value="phoneNumber") String phoneNumber){
+
+          registerService.sendSms(phoneNumber);
+    }
+    @RequestMapping("/mail")
+    public void mail(@RequestParam(value="mail") String mail){
+
+        registerService.sendmail(mail);
+    }
 
 }
