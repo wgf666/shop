@@ -1,6 +1,5 @@
 package cart.web.controller;
 
-import cart.web.pojo.CartItem;
 import cart.web.serivce.IShopCartService;
 import dto.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,15 +20,34 @@ public class ShopCartController {
     private IShopCartService shopCartService;
 
     @RequestMapping("cart/{key}")
-    ResultBean getShopcartList(@PathVariable(value = "key") String key){
+    ResultBean showCart(@PathVariable(value = "key") String key){
 
-        return shopCartService.getShopcartList(key);
+        return shopCartService.showCart(key);
+    }
+    @RequestMapping("cart/add/{key}/{goodsId}/{count}")
+    ResultBean  addProduct(@PathVariable(value = "key") String key,
+                           @PathVariable(value = "goodsId") long goodsId,
+                            @PathVariable(value = "count") Integer count){
+
+        return shopCartService.addProduct(key,goodsId,count);
+    }
+    @RequestMapping("cart/clean/{key}/{productId}")
+    ResultBean clean(@PathVariable(value = "key") String key,
+                     @PathVariable(value = "productId") Long productId){
+        return shopCartService.clean(key,productId);
     }
 
-    @RequestMapping("user/cart/add/{key}/{cartItem}")
-    ResultBean  add(@PathVariable String key, @PathVariable CartItem cartItem){
+    @RequestMapping("cart/update/{uuid}/{productId}/{count}")
+    ResultBean update(@PathVariable(value = "uuid") String uuid,
+                      @PathVariable(value = "productId") Long productId,
+                      @PathVariable(value = "count") Integer count){
+        return shopCartService.update(uuid,productId,count);
+    }
 
-        return shopCartService.add(key,cartItem);
+    @RequestMapping("cart/merge/{noLoginKey}/{loginKey}")
+    ResultBean merge(@PathVariable(value = "noLoginKey") String noLoginKey,
+                     @PathVariable(value = "loginKey") String loginKey){
+        return shopCartService.merge(noLoginKey,loginKey);
     }
 
 }

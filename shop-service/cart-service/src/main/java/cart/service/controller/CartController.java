@@ -1,6 +1,5 @@
 package cart.service.controller;
 
-import cart.service.pojo.CartItem;
 import cart.service.service.ShopCartService;
 import dto.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +20,29 @@ public class CartController {
     private ShopCartService shopCartService;
 
     @RequestMapping("cart/{key}")
-    ResultBean getShopcartList(@PathVariable(value = "key") String key){
+    ResultBean showCart(@PathVariable(value = "key") String key){
 
-        return shopCartService.getShopcartList(key);
+        return shopCartService.showCart(key);
     }
-    @RequestMapping("cart/add/{key}/{cartItem}")
-    ResultBean  add(@PathVariable String key, @PathVariable CartItem cartItem){
+    @RequestMapping("cart/add/{key}/{goodsId}/{count}")
+    ResultBean  addProduct(@PathVariable String key,
+                           @PathVariable long goodsId,
+                            @PathVariable Integer count){
 
-        return shopCartService.add(key,cartItem);
+        return shopCartService.addProduct(key,goodsId,count);
+    }
+    @RequestMapping("cart/clean/{key}/{productId}")
+    ResultBean clean(String key, Long productId){
+        return shopCartService.clean(key,productId);
+    }
+
+    @RequestMapping("cart/update/{uuid}/{productId}/{count}")
+    ResultBean update(String uuid, Long productId,Integer count){
+        return shopCartService.update(uuid,productId,count);
+    }
+
+    @RequestMapping("cart/merge/{noLoginKey}/{loginKey}")
+    ResultBean merge(String noLoginKey, String loginKey){
+        return shopCartService.merge(noLoginKey,loginKey);
     }
 }
