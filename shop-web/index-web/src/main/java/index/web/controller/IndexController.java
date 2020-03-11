@@ -17,7 +17,7 @@ public class IndexController {
     @Autowired
     private IGoodsTypeService goodsTypeService;
 
-    @RequestMapping("index")
+    @RequestMapping({"","index"})
     public String index(ModelMap map){
 
         ResultBean resultBean = goodsTypeService.showIndex();
