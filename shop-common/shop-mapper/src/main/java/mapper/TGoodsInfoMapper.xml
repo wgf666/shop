@@ -167,4 +167,12 @@
     isdelete = #{isdelete,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <!--后台查询集合-->
+  <select id="list"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    FROM t_goods_info WHERE isdelete ='否'
+  </select>
+
 </mapper>
