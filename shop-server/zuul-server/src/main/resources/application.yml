@@ -25,6 +25,14 @@ zuul:
       path: /search/**
       serviceId: search-web
       stripPrefix: false
+
+    shopcart:
+      path: /user/cart/**
+      serviceId: cart-web
+      stripPrefix: false
+#    static:
+#      path: /static/**
+#      url: http://localhost:9010/static/
   host:
     connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
     socket-timeout-millis: 10000   #socket超时
