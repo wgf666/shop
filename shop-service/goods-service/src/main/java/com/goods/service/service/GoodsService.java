@@ -1,6 +1,7 @@
 package com.goods.service.service;
 
 import com.github.pagehelper.PageInfo;
+import dto.ResultBean;
 import entity.TGoodsInfo;
 
 /**
@@ -10,6 +11,6 @@ import entity.TGoodsInfo;
  */
 public interface GoodsService {
 
-    PageInfo<TGoodsInfo> getPageList(Integer pageIndex, Integer pageSize);
+    ResultBean getPageList(Integer pageIndex, Integer pageSize);
 
 }
