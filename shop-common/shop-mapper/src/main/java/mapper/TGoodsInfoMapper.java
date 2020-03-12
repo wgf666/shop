@@ -1,6 +1,7 @@
 package mapper;
 
 import entity.TGoodsInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -21,5 +22,7 @@ public interface TGoodsInfoMapper {
 
     List<TGoodsInfo> list();
 
+    int delById(Integer id);
 
+    int delBatch(@Param("ids") Integer[] ids);
 }

@@ -169,9 +169,23 @@
 
   <!--后台查询集合-->
   <select id="list"  resultMap="BaseResultMap">
-    select
+    SELECT
     <include refid="Base_Column_List" />
     FROM t_goods_info WHERE isdelete ='否'
   </select>
-
+  <!--假删除-->
+  <update id="delById" parameterType="java.lang.Integer">
+      UPDATE t_goods_info
+      SET isdelete = '是'
+      WHERE id = #{id}
+  </update>
+  <!--批量假删除-->
+  <update id="delBatch">
+    UPDATE t_goods_info
+    SET isdelete = '是'
+    WHERE id IN
+    <foreach collection="ids" item="id" open="(" separator=","  close=")" >
+      #{id}
+    </foreach>
+  </update>
 </mapper>

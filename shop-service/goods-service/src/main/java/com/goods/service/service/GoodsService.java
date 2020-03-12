@@ -13,4 +13,7 @@ public interface GoodsService {
 
     ResultBean getPageList(Integer pageIndex, Integer pageSize);
 
+    int delById(Integer id);
+
+    int delBatch(Integer[] ids);
 }

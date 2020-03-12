@@ -17,4 +17,9 @@ public interface GoodsService {
     @RequestMapping("page")
     public ResultBean getPageList(@RequestParam("pageIndex") Integer pageIndex,@RequestParam("pageSize") Integer pageSize);
 
+    @RequestMapping("del")
+    public int delById(@RequestParam("id") Integer id);
+
+    @RequestMapping("delBatch")
+    public int delBatch(Integer[] ids);
 }

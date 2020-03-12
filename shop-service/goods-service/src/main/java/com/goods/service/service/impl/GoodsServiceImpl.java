@@ -32,4 +32,15 @@ public class GoodsServiceImpl implements GoodsService {
         System.out.println(pageInfo);
         return ResultBean.success(pageInfo);
     }
+
+    @Override
+    public int delById(Integer id) {
+        //假删除
+        return goodsInfoMapper.delById(id);
+    }
+
+    @Override
+    public int delBatch(Integer[] ids) {
+        return goodsInfoMapper.delBatch(ids);
+    }
 }

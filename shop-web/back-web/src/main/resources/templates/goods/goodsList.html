@@ -268,12 +268,12 @@
             var id = $(this).attr("id");
             if (confirm("确认删除吗？")){
                 $.ajax({
-                    url:"product/del/"+id,
+                    url:"goods/del/?id="+id,
                     type:"POST",
                     success: function (result) {
                         alert(result.data)
                         if (result.statusCode == 200){
-                            location.href="/product/page/1/5";
+                            location.href="goods/page?pageIndex=1&pageSize=5";
                         }
                     }
                 })
@@ -292,6 +292,7 @@
             var checkIds = $(".checkOne:checked");
             if (checkIds.length==0){
                 alert("请进行勾选")
+                return;
             }
             var ids = [];
             for (var i = 0;i<checkIds.length;i++){
@@ -299,7 +300,7 @@
             }
             if (confirm("确认删除这些吗？")){
                 $.ajax({
-                    url:"product/delBatch",
+                    url:"goods/delBatch",
                     data:"ids="+ids,
                     type:"POST",
                     success: function (result) {
