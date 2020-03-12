@@ -9,6 +9,7 @@
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="is_admin" jdbcType="VARCHAR" property="isAdmin" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
   </resultMap>
   <sql id="Base_Column_List">
     id, name, password, sex, phone, email, is_admin
@@ -55,6 +56,9 @@
       <if test="isAdmin != null">
         is_admin,
       </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -77,6 +81,9 @@
       </if>
       <if test="isAdmin != null">
         #{isAdmin,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -113,5 +120,10 @@
       email = #{email,jdbcType=VARCHAR},
       is_admin = #{isAdmin,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="update" parameterType="String">
+  UPDATE  t_user
+   SET    status=1
+  WHERE   name=#{addr}
   </update>
 </mapper>

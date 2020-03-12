@@ -24,27 +24,34 @@
                 <th><input type="checkbox" id="checkAll"></th>
                 <th>编号</th>
                 <th>商品名称</th>
-                <th>商品类型</th>
-                <th>商品价格</th>
-                <th>优惠价</th>
-                <th>商品卖点</th>
+                <th>商品描述</th>
                 <th>商品图片</th>
+                <th>商品价格</th>
+                <th>商品库存</th>
+                <th>商品折后价</th>
+                <th>商品折扣</th>
+                <th>商品所属小类</th>
+                <th>商品所属大类</th>
                 <th>操作</th>
             </tr>
-            <tr th:each="p:${pageInfo.list}">
-                <td><input type="checkbox" class="checkOne" th:value="${p.id}">1</td>
-                <td th:text="${p.id}">1</td>
-                <td th:text="${p.name}">x</td>
-                <td th:text="${p.typeName}">x</td>
-                <td th:text="${p.price}">xx</td>
-                <td th:text="${p.salePrice}">xx</td>
-                <td th:text="${p.salePoint}">xxx</td>
+            <tr th:each="g:${pageInfo.list}">
+                <td><input type="checkbox" class="checkOne" th:value="${g.id}"></td>
+                <td th:text="${g.id}">id</td>
+                <td th:text="${g.goodsName}">名称</td>
+                <td th:text="${g.goodsDescription}">描述</td>
                 <td>
-                    <img src="#" th:src="${p.image}" alt="图片加载失败" style="width: 100px;height: 80px" >
+                    <img src="#" th:src="${g.goodsPic}" alt="图片加载失败" style="width: 100px;height: 80px" >
                 </td>
+                <td th:text="${g.goodsPrice}">价格</td>
+                <td th:text="${g.goodsStock}">库存</td>
+                <td th:text="${g.goodsPriceOff}">折后价</td>
+                <td th:text="${g.goodsDiscount}">折扣</td>
+                <td th:text="${g.goodsFatherid}">所属小类</td>
+                <td th:text="${g.goodsParentid}">所属大类</td>
+
                 <td>
-                    <button type="button" class="btn btn-primary update" th:id="${p.id}">修改</button>
-                    <button type="button" class="btn btn-danger delete" th:id="${p.id}" >删除</button>
+                    <button type="button" class="btn btn-primary update" th:id="${g.id}">修改</button>
+                    <button type="button" class="btn btn-danger delete" th:id="${g.id}" >删除</button>
                 </td>
             </tr>
         </table>
@@ -61,16 +68,16 @@
         <nav aria-label="Page navigation">
             <!--分页导航-->
             <ul class="pagination" >
-                <li>
-                    <a href="#" th:href="|product/page/${pageInfo.pageNum - 1}/${pageInfo.pageSize}|"   aria-label="Previous">
+                <li th:class="${pageInfo.pageNum==1 ? 'disabled':''}" >
+                    <a href="#" th:href="|goods/page?pageIndex=${pageInfo.pageNum - 1}&pageSize=${pageInfo.pageSize}|" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
                 </li>
-                <li th:each="num : ${pageInfo.navigatepageNums}" th:class="${num == pageInfo.pageNum ? 'active':''}">
-                    <a href="#" th:href="|product/page/${num}/${pageInfo.pageSize}|" th:text="${num}">1</a>
+                <li th:each="num:${pageInfo.navigatepageNums}" th:class="${num == pageInfo.pageNum ? 'active':''}">
+                    <a href="#" th:href="|goods/page?pageIndex=${num}&pageSize=${pageInfo.pageSize}|" th:text="${num}">1</a>
                 </li>
-                <li>
-                    <a href="#" th:href="|product/page/${pageInfo.pageNum + 1}/${pageInfo.pageSize}|"  aria-label="Next">
+                <li th:class="${pageInfo.pageNum==pageInfo.pages ? 'disabled':''}">
+                    <a href="#" th:href="|goods/page?pageIndex=${pageInfo.pageNum + 1}&pageSize=${pageInfo.pageSize}|" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
