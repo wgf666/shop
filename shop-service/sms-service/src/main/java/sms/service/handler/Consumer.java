@@ -39,7 +39,7 @@ public class Consumer {
     SmsUtil.http_url  =http_url;
     SmsUtil.sendTplSms(phoneNumber,tplId,content);
 
-    //组织键值对，存入redis中
+    //键值对，存入redis中
        String redisKey = StringUtil.getRedisKey("register:phone:", phoneNumber);
        //设置键值对和有效期
     redisTemplate.opsForValue().set(redisKey,code,5, TimeUnit.MINUTES);

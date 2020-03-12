@@ -16,16 +16,22 @@ public class activeAccount {
    @Autowired
    private TUserMapper userMapper;
 
-    @RequestMapping("/active/account/{uuid}")
+   @RequestMapping("/active/account/{uuid}")
  private ResultBean active(@PathVariable String uuid){
      //1. 这是redis中的键。
         String redisKey = StringUtil.getRedisKey("register:email:", uuid);
      //从redis的键中获得邮箱账号
         String addr = (String) redisTemplate.opsForValue().get(redisKey);
-     //将status从0改到1
+        System.out.println(addr);
+        if(addr==null){
+         return  ResultBean.error("无法从redis中获取账户信息");
+     }
+        //将status从0改到1
      int active = userMapper.update(addr);
-     return  ResultBean.success("激活成功");
-
+    if(active>0){
+        return  ResultBean.success("从数据库中激活成功");
+}
+     return  ResultBean.error("激活失败");
     }
 
 

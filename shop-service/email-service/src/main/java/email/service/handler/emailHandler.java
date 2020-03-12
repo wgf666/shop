@@ -21,6 +21,7 @@ public class emailHandler {
 
     @RabbitListener(queues = "mail-queue")
     public void  sendMail(EmailMessageDTO message){
+        System.out.println(message.getUrl());
         try {
             MimeMessage mimeMessage = sender.createMimeMessage();
 
