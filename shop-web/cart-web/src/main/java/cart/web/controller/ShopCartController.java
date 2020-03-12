@@ -36,9 +36,8 @@ public class ShopCartController {
         return "shopcart";
     }
     @ResponseBody
-    @RequestMapping("cart/add/{key}/{goodsId}/{count}")
+    @RequestMapping("cart/add/{goodsId}/{count}")
     ResultBean  addProduct(@CookieValue(name = CookieConstant.USER_CART, required = false) String uuid,
-                           @PathVariable(value = "key") String key,
                            @PathVariable(value = "goodsId") long goodsId,
                            @PathVariable(value = "count") Integer count,
                            HttpServletRequest request,
@@ -63,7 +62,7 @@ public class ShopCartController {
             response.addCookie(cookie);
         }
 
-        return shopCartService.addProduct(key,goodsId,count);
+        return shopCartService.addProduct(uuid,goodsId,count);
     }
     @ResponseBody
     @RequestMapping("cart/clean/{key}/{productId}")
@@ -94,11 +93,11 @@ public class ShopCartController {
     }
 
     @ResponseBody
-    @RequestMapping("cart/update/{key}/{productId}/{count}")
-    ResultBean update(@PathVariable(value = "uuid") String key,
+    @RequestMapping("cart/update/{productId}/{count}")
+    ResultBean update(@CookieValue(name=CookieConstant.USER_CART,required = false)String uuid,
                       @PathVariable(value = "productId") Long productId,
                       @PathVariable(value = "count") Integer count,
-                      @CookieValue(name=CookieConstant.USER_CART,required = false)String uuid,
+
                       HttpServletRequest request){
         Object o = request.getAttribute("user");
         if(o!=null){
@@ -107,7 +106,7 @@ public class ShopCartController {
             return shopCartService.update(user.getId().toString(),productId,count);
 
         }
-        return shopCartService.update(key,productId,count);
+        return shopCartService.update(uuid,productId,count);
     }
     @ResponseBody
     @RequestMapping("cart/merge/{noLoginKey}/{loginKey}")
