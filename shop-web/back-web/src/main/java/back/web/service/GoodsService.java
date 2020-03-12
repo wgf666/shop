@@ -1,9 +1,11 @@
 package back.web.service;
 
 import com.github.pagehelper.PageInfo;
+import dto.ResultBean;
 import entity.TGoodsInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * @Author zzp
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @FeignClient(name = "GOODS-SERVICE")
 public interface GoodsService {
-    @RequestMapping("page/{pageIndex}/{pageSize}")
-    PageInfo<TGoodsInfo> getPageList(Integer pageIndex, Integer pageSize);
+    @RequestMapping("page")
+    public ResultBean getPageList(@RequestParam("pageIndex") Integer pageIndex,@RequestParam("pageSize") Integer pageSize);
 
 }
