@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TOrder {
+public class TOrder implements Serializable {
     private Integer id;
 
     private String oSendtype;

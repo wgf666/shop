@@ -1,0 +1,16 @@
+server:
+  port: 9032
+
+
+
+spring:
+  application:
+    name: order-web
+  redis:
+    cluster:
+      nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

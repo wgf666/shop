@@ -1,1 +1,19 @@
+server:
+  port: 8032
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
+spring:
+  application:
+    name: product-service
+  redis:
+    cluster:
+      nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
 

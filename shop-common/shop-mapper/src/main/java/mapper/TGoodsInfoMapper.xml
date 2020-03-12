@@ -27,7 +27,6 @@
     select
     <include refid="Base_Column_List" />
     from t_goods_info
-    where id = #{id,jdbcType=INTEGER}
   </select>
 
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">

@@ -1,6 +1,8 @@
 package entity;
 
-public class TAddress {
+import java.io.Serializable;
+
+public class TAddress implements Serializable {
     private Integer id;
 
     private String shouhuoren;

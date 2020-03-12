@@ -2,7 +2,7 @@ package dto;
 
 import java.io.Serializable;
 
-public class ResultBean implements Serializable {
+public class ResultBean extends Throwable implements Serializable {
 
     private static final long serialVersionUID = 42L;
 

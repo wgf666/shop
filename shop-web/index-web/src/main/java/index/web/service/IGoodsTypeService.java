@@ -13,4 +13,7 @@ public interface IGoodsTypeService {
 
     @RequestMapping("index")
     public ResultBean showIndex();
+
+    @RequestMapping("goodsInfo")
+    public ResultBean showGoodsInfo();
 }

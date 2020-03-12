@@ -25,6 +25,10 @@ zuul:
       path: /search/**
       serviceId: search-web
       stripPrefix: false
+    desc:
+      path: /desc/**
+      serviceId: product-web
+      stripPrefix: false
 
     shopcart:
       path: /user/cart/**

@@ -1,6 +1,10 @@
 server:
   port: 8030
 
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
 spring:
   application:
     name: search-service

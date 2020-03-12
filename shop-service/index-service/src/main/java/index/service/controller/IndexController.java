@@ -1,6 +1,7 @@
 package index.service.controller;
 
 import dto.ResultBean;
+import index.service.service.IGoodsInfoService;
 import index.service.service.IGoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +18,20 @@ public class IndexController {
     @Autowired
     private IGoodsTypeService goodsTypeService;
 
+    @Autowired
+    private IGoodsInfoService goodsInfoService;
+
     @RequestMapping("index")
     @ResponseBody
     public ResultBean showIndex(){
 
         return goodsTypeService.selectAll();
+    }
+
+    @RequestMapping("goodsInfo")
+    @ResponseBody
+    public ResultBean showGoodsInfo(){
+
+        return goodsInfoService.selectAll();
     }
 }

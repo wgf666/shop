@@ -1,8 +1,9 @@
 package entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TOrderDetail {
+public class TOrderDetail implements Serializable {
     private Integer id;
 
     private Date goodsDate;

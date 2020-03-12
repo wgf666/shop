@@ -1,6 +1,8 @@
 package entity;
 
-public class TGoodsType {
+import java.io.Serializable;
+
+public class TGoodsType implements Serializable {
     private Integer id;
 
     private String gtypeName;

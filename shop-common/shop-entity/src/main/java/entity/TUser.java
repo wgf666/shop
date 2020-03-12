@@ -1,6 +1,8 @@
 package entity;
 
-public class TUser {
+import java.io.Serializable;
+
+public class TUser implements Serializable {
     private Integer id;
 
     private String name;

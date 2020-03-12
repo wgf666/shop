@@ -17,11 +17,17 @@ public class IndexController {
     @Autowired
     private IGoodsTypeService goodsTypeService;
 
+
     @RequestMapping({"","index"})
     public String index(ModelMap map){
 
-        ResultBean resultBean = goodsTypeService.showIndex();
-        map.put("goodsType",resultBean.getData());
+        ResultBean goodsType = goodsTypeService.showIndex();
+        ResultBean goodsInfo = goodsTypeService.showGoodsInfo();
+
+        map.put("goodsType",goodsType.getData());
+        map.put("goodsInfo",goodsInfo.getData());
+
+
         return "index";
     }
 }
