@@ -41,6 +41,7 @@ public class GoodsServiceImpl implements GoodsService {
 
     @Override
     public int delBatch(Integer[] ids) {
+        //批量假删除
         return goodsInfoMapper.delBatch(ids);
     }
 }

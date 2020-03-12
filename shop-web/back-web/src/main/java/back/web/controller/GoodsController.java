@@ -1,6 +1,7 @@
 package back.web.controller;
 
 import back.web.service.GoodsService;
+import back.web.service.ISearchService;
 import dto.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,8 @@ public class GoodsController {
 
     @Autowired
     private GoodsService goodsService;
+    @Autowired
+    private ISearchService searchService;
 
     @RequestMapping("welcome")
     public String welcome(){
@@ -36,8 +39,8 @@ public class GoodsController {
     public entity.ResultBean del(@RequestParam("id") Integer id){
         //假删除
         int resultcount = goodsService.delById(id);
-        //删除 solr 索引库对应数据
-//        searchService.delById(id);
+        //删除solr索引库对应数据
+        searchService.delById(id);
         if (resultcount>0){
             return new entity.ResultBean(200,"删除成功！");
         }else {
@@ -47,8 +50,8 @@ public class GoodsController {
     @RequestMapping("delBatch")
     public entity.ResultBean delBatch(Integer[] ids){
         int resultcount = goodsService.delBatch(ids);
-        //批量删除 solr 索引库对应数据
-//        searchService.delByIds(ids);
+        //批量删除solr索引库对应数据
+        searchService.delByIds(ids);
         if (resultcount>0){
             return new entity.ResultBean(200,"批量删除成功！");
         }else {
