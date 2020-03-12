@@ -10,6 +10,6 @@ public interface registerService {
     @RequestMapping("/register/sms")
     ResultBean sendSms(@RequestParam(value = "phoneNumber") String phoneNumber);
     @RequestMapping("/register/mail")
-    ResultBean sendmail(@RequestParam(value = "mail")String mail );
+    ResultBean sendmail(@RequestParam(value = "mail")String mail,@RequestParam(value = "password")String password );
 
 }

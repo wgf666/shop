@@ -1,1 +1,25 @@
+spring:
+   application:
+     name: email-service
+   mail:
+      host: smtp.163.com
+      username: xushicai0210@163.com
+      password: czh1181957956
+      default-encoding: utf-8
+redis:
+  host: 192.168.174.128
+  port: 6688
+  jedis:
+    pool:
+      max-active: 20
 
+server:
+  port: 8004
+
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+activeServerUrl: http://localhost:8763/email/active/account/

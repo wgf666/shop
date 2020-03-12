@@ -19,13 +19,11 @@ public class register {
     //feign调用
     @RequestMapping("/sms")
     public void sms(@RequestParam(value="phoneNumber") String phoneNumber){
-
           registerService.sendSms(phoneNumber);
     }
     @RequestMapping("/mail")
-    public void mail(@RequestParam(value="mail") String mail){
-
-        registerService.sendmail(mail);
+    public void mail(@RequestParam(value="mail") String mail,@RequestParam(value = "password")String password){
+        registerService.sendmail(mail,password);
     }
 
 }
