@@ -9,7 +9,6 @@ import mapper.TGoodsInfoMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -29,7 +28,8 @@ public class GoodsServiceImpl implements GoodsService {
     public ResultBean getPageList(Integer pageIndex,Integer pageSize) {
         PageHelper.startPage(pageIndex,pageSize);
         List<TGoodsInfo> list = goodsInfoMapper.list();
-        PageInfo<TGoodsInfo> pageInfo = new PageInfo<TGoodsInfo>(list,5);
+        PageInfo<TGoodsInfo> pageInfo = new PageInfo<>(list);
+        System.out.println(pageInfo);
         return ResultBean.success(pageInfo);
     }
 }
