@@ -126,4 +126,8 @@
    SET    status=1
   WHERE   name=#{addr}
   </update>
+  
+  <select id="selectByName" parameterType="String">
+    SELECT  * FROM  t_user  WHERE  name=#{uname}
+       </select>
 </mapper>

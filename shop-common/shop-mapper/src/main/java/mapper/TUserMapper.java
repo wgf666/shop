@@ -16,4 +16,6 @@ public interface TUserMapper {
     int updateByPrimaryKey(TUser record);
 
     int update(String addr);
+
+    TUser selectByName(String uname);
 }
