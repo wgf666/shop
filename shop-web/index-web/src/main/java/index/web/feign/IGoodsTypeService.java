@@ -1,4 +1,4 @@
-package index.web.service;
+package index.web.feign;
 
 import dto.ResultBean;
 import org.springframework.cloud.openfeign.FeignClient;

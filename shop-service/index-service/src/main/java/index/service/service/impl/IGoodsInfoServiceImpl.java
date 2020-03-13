@@ -8,10 +8,15 @@ import index.service.service.IGoodsInfoService;
 import index.service.service.IGoodsTypeService;
 import mapper.TGoodsInfoMapper;
 import mapper.TGoodsTypeMapper;
+import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrServerException;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -28,6 +33,9 @@ public class IGoodsInfoServiceImpl implements IGoodsInfoService {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    @Autowired
+    private SolrClient solrClient;
+
     @Override
     public ResultBean selectAll() {
 
@@ -35,8 +43,35 @@ public class IGoodsInfoServiceImpl implements IGoodsInfoService {
         if(goodsInfoList==null){
             goodsInfoList = goodsInfoMapper.selectAll();
             redisTemplate.opsForValue().set(RedisConstant.REDIS_INFO,goodsInfoList,RedisConstant.SESSION_TIMEOUT, TimeUnit.SECONDS);
+            //初始化solr
+            //new IGoodsInfoServiceImpl().initSolr(goodsInfoList);
+
         }
 
             return ResultBean.success(goodsInfoList);
     }
+
+//    public void initSolr(List<TGoodsInfo> goodsInfoList){
+//        List<SolrInputDocument> solrList=new ArrayList<>();
+//        for (TGoodsInfo goodsInfo : goodsInfoList) {
+//            SolrInputDocument document = new SolrInputDocument();
+//            document.setField("id",goodsInfo.getId());
+//            document.setField("t_goods_name",goodsInfo.getGoodsName());
+//            document.setField("t_goods_price_off",goodsInfo.getGoodsPriceOff());
+//            document.setField("t_goods_pic",goodsInfo.getGoodsPic());
+//            document.setField("t_goods_description",goodsInfo.getGoodsDescription());
+//
+//            solrList.add(document);
+//        }
+//
+//        try {
+//            solrClient.add(solrList);
+//            solrClient.commit();
+//        } catch (SolrServerException e) {
+//            e.printStackTrace();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
 }

@@ -3,7 +3,7 @@ package index.web.controller;
 import com.google.gson.Gson;
 import constant.CookieConstant;
 import dto.ResultBean;
-import index.web.service.IGoodsTypeService;
+import index.web.feign.IGoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;

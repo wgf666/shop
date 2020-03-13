@@ -9,6 +9,7 @@ import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
+import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,28 @@ public class SearchServiceImpl implements ISearchService {
 
     @Override
     public ResultBean searchByKeyword(@RequestParam String keyword) {
+        //初始化solr
+        List<TGoodsInfo> goodsInfoList1 = goodsInfoMapper.selectAll();
+        List<SolrInputDocument> solrList=new ArrayList<>();
+        for (TGoodsInfo goodsInfo : goodsInfoList1) {
+            SolrInputDocument document = new SolrInputDocument();
+            document.setField("id",goodsInfo.getId());
+            document.setField("t_goods_name",goodsInfo.getGoodsName());
+            document.setField("t_goods_price_off",goodsInfo.getGoodsPriceOff());
+            document.setField("t_goods_pic",goodsInfo.getGoodsPic());
+            document.setField("t_goods_description",goodsInfo.getGoodsDescription());
+
+            solrList.add(document);
+        }
+
+        try {
+            solrClient.add(solrList);
+            solrClient.commit();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //创建查询对象并设置key
         SolrQuery solrQuery = new SolrQuery();

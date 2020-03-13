@@ -21,38 +21,11 @@ import java.util.List;
 @MapperScan("mapper")
 public class SearchServiceApplication {
 
-    @Autowired
-    private static TGoodsInfoMapper goodsInfoMapper;
-
-    @Autowired
-    private static SolrClient solrClient;
-
     public static void main(String[] args) {
         SpringApplication.run(SearchServiceApplication.class, args);
 
-        List<TGoodsInfo> goodsInfoList = goodsInfoMapper.selectAll();
 
-        List<SolrInputDocument> solrList=new ArrayList<>();
-
-        for (TGoodsInfo goodsInfo : goodsInfoList) {
-            SolrInputDocument document = new SolrInputDocument();
-            document.setField("id",goodsInfo.getId());
-            document.setField("t_goods_name",goodsInfo.getGoodsName());
-            document.setField("t_goods_price_off",goodsInfo.getGoodsPriceOff());
-            document.setField("t_goods_pic",goodsInfo.getGoodsPic());
-            document.setField("t_goods_description",goodsInfo.getGoodsDescription());
-
-            solrList.add(document);
-        }
-
-        try {
-            solrClient.add(solrList);
-            solrClient.commit();
-        } catch (SolrServerException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
 }
+

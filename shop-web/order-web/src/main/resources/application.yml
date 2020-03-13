@@ -1,7 +1,9 @@
 server:
-  port: 9032
+  port: 9033
 
-
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
 
 spring:
   application:

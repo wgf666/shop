@@ -1,6 +1,8 @@
 package order.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * @author:吴小富
@@ -9,4 +11,9 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class OrderController {
 
+    @RequestMapping("order/{id}")
+    public String addOrder(@PathVariable("id") String id,String sum){
+        System.out.println(id+"------"+sum);
+        return null;
+    }
 }

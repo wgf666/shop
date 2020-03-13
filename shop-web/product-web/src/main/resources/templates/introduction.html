@@ -2,9 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<!--		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />-->
+<!--		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">-->
 
+        <base th:href="@{/}">
 		<title>商品页面</title>
 
 		<link href="AmazeUI-2.4.2/assets/css/admin.css" rel="stylesheet" type="text/css" />
@@ -20,6 +21,13 @@
 		<script type="text/javascript" src="js/jquery.imagezoom.min.js"></script>
 		<script type="text/javascript" src="js/jquery.flexslider.js"></script>
 		<script type="text/javascript" src="js/list.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $("#LikBuy").click(function () {
+                    $("#loginform").commit();
+                })
+            })
+        </script>
 
 	</head>
 
@@ -52,6 +60,15 @@
 			</ul>
 			</div>
 
+
+
+
+
+
+
+
+
+
 			<!--悬浮搜索框-->
 
 			<div class="nav white">
@@ -67,6 +84,20 @@
 					</form>
 				</div>
 			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			<div class="clear"></div>
             <b class="line"></b>
@@ -123,11 +154,45 @@
 					</section>
 				</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				<!--放大镜-->
 
 				<div class="item-inform">
 					<div class="clearfixLeft" id="clearcontent">
-
+                        <!--图片-->
 						<div class="box">
 							<script type="text/javascript">
 								$(document).ready(function() {
@@ -141,22 +206,16 @@
 							</script>
 
 							<div class="tb-booth tb-pic tb-s310">
-								<a href="images/01.jpg"><img src="images/01_mid.jpg" alt="细节展示放大镜特效" rel="images/01.jpg" class="jqzoom" /></a>
+								<a href="images/01.jpg">
+                                    <img th:src="${'images/'+goodsInfo.goodsPic}" th:rel="${'images/'+goodsInfo.goodsPic}" src="images/01_mid.jpg" alt="细节展示放大镜特效" rel="images/01.jpg" class="jqzoom" />
+                                </a>
 							</div>
 							<ul class="tb-thumb" id="thumblist">
 								<li class="tb-selected">
 									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/01_small.jpg" mid="images/01_mid.jpg" big="images/01.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/02_small.jpg" mid="images/02_mid.jpg" big="images/02.jpg"></a>
-									</div>
-								</li>
-								<li>
-									<div class="tb-pic tb-s40">
-										<a href="#"><img src="images/03_small.jpg" mid="images/03_mid.jpg" big="images/03.jpg"></a>
+										<a href="#">
+                                            <img th:src="${'images/'+goodsInfo.goodsPic}" th:min="${'images/'+goodsInfo.goodsPic}" src="images/01_small.jpg" mid="images/01_mid.jpg" big="images/01.jpg">
+                                        </a>
 									</div>
 								</li>
 							</ul>
@@ -165,25 +224,26 @@
 						<div class="clear"></div>
 					</div>
 
+
 					<div class="clearfixRight">
 
 						<!--规格属性-->
 						<!--名称-->
 						<div class="tb-detail-hd">
-							<h1>	
-				 良品铺子 手剥松子218g 坚果炒货 巴西松子
-	          </h1>
+							<h1 th:text="${goodsInfo.goodsDescription}">良品铺子 手剥松子218g 坚果炒货 巴西松子</h1>
 						</div>
+
 						<div class="tb-detail-list">
+
 							<!--价格-->
 							<div class="tb-detail-price">
 								<li class="price iteminfo_price">
 									<dt>促销价</dt>
-									<dd><em>¥</em><b class="sys_item_price">56.90</b>  </dd>                                 
+									<dd><em>¥</em><b th:text="${goodsInfo.goodsPriceOff}" class="sys_item_price">56.90</b>  </dd>
 								</li>
 								<li class="price iteminfo_mktprice">
 									<dt>原价</dt>
-									<dd><em>¥</em><b class="sys_item_mktprice">98.00</b></dd>									
+									<dd><em>¥</em><b th:text="${goodsInfo.goodsPrice}" class="sys_item_mktprice">98.00</b></dd>
 								</li>
 								<div class="clear"></div>
 							</div>
@@ -237,42 +297,46 @@
 
 									<div class="theme-popover">
 										<div class="theme-span"></div>
-										<div class="theme-poptit">
-											<a href="javascript:;" title="关闭" class="close">×</a>
-										</div>
-										<div class="theme-popbod dform">
-											<form class="theme-signin" name="loginform" action="" method="post">
 
-												<div class="theme-signin-left">
+                                            <div class="theme-signin-left">
 
-													<div class="theme-options">
-														<div class="cart-title">口味</div>
-														<ul>
-															<li class="sku-line selected">原味<i></i></li>
-															<li class="sku-line">奶油<i></i></li>
-															<li class="sku-line">炭烧<i></i></li>
-															<li class="sku-line">咸香<i></i></li>
-														</ul>
-													</div>
-													<div class="theme-options">
-														<div class="cart-title">包装</div>
-														<ul>
-															<li class="sku-line selected">手袋单人份<i></i></li>
-															<li class="sku-line">礼盒双人份<i></i></li>
-															<li class="sku-line">全家福礼包<i></i></li>
-														</ul>
-													</div>
-													<div class="theme-options">
-														<div class="cart-title number">数量</div>
-														<dd>
+                                                <!--口味-->
+                                                <div class="theme-options">
+                                                    <div class="cart-title">口味</div>
+                                                    <ul>
+                                                        <li class="sku-line selected">原味<i></i></li>
+                                                        <li class="sku-line">奶油<i></i></li>
+                                                        <li class="sku-line">炭烧<i></i></li>
+                                                        <li class="sku-line">咸香<i></i></li>
+                                                    </ul>
+                                                </div>
+                                                <!--包装-->
+                                                <div class="theme-options">
+                                                    <div class="cart-title">包装</div>
+                                                    <ul>
+                                                        <li class="sku-line selected">手袋单人份<i></i></li>
+                                                        <li class="sku-line">礼盒双人份<i></i></li>
+                                                        <li class="sku-line">全家福礼包<i></i></li>
+                                                    </ul>
+                                                </div>
+                                                <!--库存-->
+                                                <div class="theme-options">
+                                                    <div class="cart-title number">数量</div>
+                                <dd>
+                                <div class="theme-poptit">
+                                <a href="javascript:;" title="关闭" class="close">×</a>
+                        </div>
+                                <div class="theme-popbod dform">
 															<input id="min" class="am-btn am-btn-default" name="" type="button" value="-" />
-															<input id="text_box" name="" type="text" value="1" style="width:30px;" />
+															<input id="text_box" name="sum" type="text" value="1" style="width:30px;" />
 															<input id="add" class="am-btn am-btn-default" name="" type="button" value="+" />
-															<span id="Stock1" class="tb-hidden">库存<span class="stock">1000</span>件</span>
-														</dd>
-                            </dl>
-													</div>
-													<div class="clear"></div>
+															<span id="Stock1" class="tb-hidden">库存
+                                                                <span th:text="${goodsInfo.goodsStock}" class="stock">1000</span>件
+                                                            </span>
+                                </div>
+                            </dd>
+                        </dl>
+													<div class="clear">
 
 													<div class="btn-op">
 														<div class="btn am-btn am-btn-warning">确认</div>
@@ -289,7 +353,6 @@
 													</div>
 												</div>
 
-											</form>
 										</div>
 									</div>
 
@@ -301,7 +364,9 @@
 								<div class="hot">
 									<dt class="tb-metatit">店铺优惠</dt>
 									<div class="gold-list">
-										<p>购物满2件打8折，满3件7折<span>点击领券<i class="am-icon-sort-down"></i></span></p>
+										<p><span th:text="${'购物满2件打'+goodsInfo.goodsDiscount+'折'}">购物满2件打8折，满3件7折</span>
+                                            <span>点击领券<i class="am-icon-sort-down"></i></span>
+                                        </p>
 									</div>
 								</div>
 								<div class="clear"></div>
@@ -318,15 +383,18 @@
 							</div>
 						</div>
 
+                <!--表单-->
+<!--                <form th:action="${'order/'+goodsInfo.id}" class="theme-signin" id="loginform" action="" method="post">-->
+                    <input id="sum" name="sum" type="hidden"/>
 						<div class="pay">
 							<div class="pay-opt">
 							<a href="home.html"><span class="am-icon-home am-icon-fw">首页</span></a>
 							<a><span class="am-icon-heart am-icon-fw">收藏</span></a>
-							
+
 							</div>
 							<li>
 								<div class="clearfix tb-btn tb-btn-buy theme-login">
-									<a id="LikBuy" title="点此按钮到下一步确认购买信息" href="#">立即购买</a>
+									<a id="LikBuy" title="点此按钮到下一步确认购买信息">立即购买</a>
 								</div>
 							</li>
 							<li>
@@ -335,12 +403,14 @@
 								</div>
 							</li>
 						</div>
-
+<!--                </form>-->
 					</div>
 
 					<div class="clear"></div>
 
 				</div>
+
+
 
 				<!--优惠套装-->
 				<div class="match">
@@ -369,21 +439,21 @@
 					</div>
 				</div>
 				<div class="clear"></div>
-				
-							
+
+
 				<!-- introduce-->
 
 				<div class="introduce">
 					<div class="browse">
-					    <div class="mc"> 
-						     <ul>					    
-						     	<div class="mt">            
-						            <h2>看了又看</h2>        
+					    <div class="mc">
+						     <ul>
+						     	<div class="mt">
+						            <h2>看了又看</h2>
 					            </div>
-						     	
+
 							      <li class="first">
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>               
+							      	<div class="p-img">
+							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>
 							      	</div>
 							      	<div class="p-name"><a href="#">
 							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
@@ -392,8 +462,8 @@
 							      	<div class="p-price"><strong>￥35.90</strong></div>
 							      </li>
 							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>               
+							      	<div class="p-img">
+							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>
 							      	</div>
 							      	<div class="p-name"><a href="#">
 							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
@@ -402,37 +472,37 @@
 							      	<div class="p-price"><strong>￥35.90</strong></div>
 							      </li>
 							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>               
+							      	<div class="p-img">
+							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>
 							      	</div>
 							      	<div class="p-name"><a href="#">
 							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
 							      	</a>
 							      	</div>
 							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
+							      </li>
 							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>               
+							      	<div class="p-img">
+							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>
 							      	</div>
 							      	<div class="p-name"><a href="#">
 							      		【三只松鼠_开口松子】零食坚果特产炒货东北红松子原味
 							      	</a>
 							      	</div>
 							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
+							      </li>
 							      <li>
-							      	<div class="p-img">                    
-							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>               
+							      	<div class="p-img">
+							      		<a  href="#"> <img class="" src="images/browse1.jpg"> </a>
 							      	</div>
 							      	<div class="p-name"><a href="#">
 							      		【三只松鼠_开口松子218g】零食坚果特产炒货东北红松子原味
 							      	</a>
 							      	</div>
 							      	<div class="p-price"><strong>￥35.90</strong></div>
-							      </li>							      
-					      
-						     </ul>					
+							      </li>
+
+						     </ul>
 					    </div>
 					</div>
 					<div class="introduceMain">
@@ -501,13 +571,13 @@
 								</div>
 
 								<div class="am-tab-panel am-fade">
-									
+
                                     <div class="actor-new">
-                                    	<div class="rate">                
-                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>            
+                                    	<div class="rate">
+                                    		<strong>100<span>%</span></strong><br> <span>好评度</span>
                                     	</div>
-                                        <dl>                    
-                                            <dt>买家印象</dt>                    
+                                        <dl>
+                                            <dt>买家印象</dt>
                                             <dd class="p-bfc">
                                             			<q class="comm-tags"><span>味道不错</span><em>(2177)</em></q>
                                             			<q class="comm-tags"><span>颗粒饱满</span><em>(1860)</em></q>
@@ -517,10 +587,10 @@
                                             			<q class="comm-tags"><span>个个开口</span><em>(1392)</em></q>
                                             			<q class="comm-tags"><span>价格便宜</span><em>(1119)</em></q>
                                             			<q class="comm-tags"><span>特价买的</span><em>(865)</em></q>
-                                            			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q> 
-                                            </dd>                                           
-                                         </dl> 
-                                    </div>	
+                                            			<q class="comm-tags"><span>皮很薄</span><em>(831)</em></q>
+                                            </dd>
+                                         </dl>
+                                    </div>
                                     <div class="clear"></div>
 									<div class="tb-r-filter-bar">
 										<ul class=" tb-taglist am-avg-sm-4">

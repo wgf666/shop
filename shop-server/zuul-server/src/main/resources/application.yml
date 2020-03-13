@@ -13,10 +13,13 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 zuul:
+  host:
+    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000   #socket超时
   routes:
-#    static:
-#      path: /static/**
-#      url: http://localhost:8770/static/
+    static:
+      path: /**
+      url: http://localhost:8770/**
     index:
       path: /**
       serviceId: index-web
@@ -29,6 +32,10 @@ zuul:
       path: /desc/**
       serviceId: product-web
       stripPrefix: false
+    order:
+      path: /order/**
+      serviceId: order-web
+#      stripPrefix: false
 
     shopcart:
       path: /user/cart/**
@@ -36,10 +43,8 @@ zuul:
       stripPrefix: false
 #    static:
 #      path: /static/**
-#      url: http://localhost:9010/static/
-  host:
-    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
-    socket-timeout-millis: 10000   #socket超时
+#      url: http://localhost:8770/
+
 
 ribbon:
   ReadTimeout: 10000

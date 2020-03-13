@@ -1,13 +1,12 @@
 package search.web.controller;
 
 import dto.ResultBean;
-import entity.TGoodsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import search.web.service.ISearchService;
+import search.web.feign.ISearchService;
 
 /**
  * @author:吴小富
