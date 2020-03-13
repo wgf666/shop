@@ -88,7 +88,7 @@ public class HttpClientUtils {
             if(requestMethod.equals(HttpClientUtils.REQUEST_METHOD_GET)){
                 HttpGet httpGet = new HttpGet(url);
                 httpGet.setHeader("Connection",HttpClientUtils.REQUEST_HEADER_CONNECTION);
-                httpGet.setHeader("Cookie",cookie);//"Cookie"  "user_login=dbe06afc-8540-4b74-8035-99e188d33933"
+                httpGet.setHeader("Cookie",cookie);//"Cookie"  "user_login=dbe06afc-8540-4b74-8035-99e188d33933;user_cart=fafgszdfgs"
                 httpGet.setHeader("User-Agent",HttpClientUtils.REQUEST_HEADER_USER_AGENT);
                 httpResponse = httpClient.execute(httpGet);
             }

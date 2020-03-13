@@ -16,7 +16,7 @@ public interface ShopCartService {
 
     ResultBean update(String uuid, Long productId, Integer count);
 
-    ResultBean showCart(String key);
+    ResultBean showCart(String uuid);
 
     ResultBean merge(String noLoginKey, String loginKey);
 

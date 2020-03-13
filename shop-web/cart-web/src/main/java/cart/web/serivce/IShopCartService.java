@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 public interface IShopCartService {
 
-    @RequestMapping("user/cart/{key}")
-    ResultBean showCart(@PathVariable(value = "key") String key);
+    @RequestMapping("user/cart/{uuid}")
+    ResultBean showCart(@PathVariable(value = "uuid") String uuid);
 
     @RequestMapping("user/cart/add/{key}/{goodsId}/{count}")
     ResultBean  addProduct(@PathVariable(value = "key") String key,

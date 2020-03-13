@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import sso.web.service.UserService;
+import util.HttpClientUtils;
 import util.StringUtil;
 
 import javax.servlet.http.Cookie;
@@ -51,14 +52,13 @@ public class LoginController {
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
 
-        }
 
-        //交给service去验证用户名和密码是否正确
-        /*
+                //交给service去验证用户名和密码是否正确
+
             //===========合并购物车的Http请求===========
             //因为使用HttpClient来发送请求，所以Cookie不能像浏览器发送请求一样自动携带，因此需要我们手动携带Cookie
             //Cookie: user_cart=3b0c227d-9616-4098-b9f3-71cd1405150e; user_login=92cd6c37-36ea-426c-8a72-a826ae9ef579
-            String url = "http://localhost:9085/cart/merge";
+            String url = "http://localhost:9010/user/cart/merge";
             StringBuilder sb = new StringBuilder();
             //未登录的时候如果添加了购物车，那么cookie里就会有这个uuid
             sb.append(CookieConstant.USER_CART);
@@ -72,9 +72,12 @@ public class LoginController {
             HttpClientUtils.doGet(url, sb.toString());
 
 
-            return "redirect:http://localhost:9082";
+            return "redirect:http://localhost:9031/index";
+        }
 
-        }*/
+
+
+
 
         return "redirect:showLogin";
     }

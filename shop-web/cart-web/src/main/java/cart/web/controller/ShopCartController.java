@@ -29,9 +29,11 @@ public class ShopCartController {
     @Autowired
     private IShopCartService shopCartService;
 
-    @RequestMapping("cart/{key}")
-    String showCart(@PathVariable(value = "key") String key, Model model){
-        ResultBean resultBean = shopCartService.showCart(key);
+    @RequestMapping("cart")
+    String showCart(@CookieValue(name = CookieConstant.USER_CART, required = false) String uuid,
+                    Model model){
+        System.out.println("uuid====="+uuid);
+        ResultBean resultBean = shopCartService.showCart(uuid);
         model.addAttribute("result",resultBean.getData());
         return "shopcart";
     }
@@ -65,17 +67,16 @@ public class ShopCartController {
         return shopCartService.addProduct(uuid,goodsId,count);
     }
     @ResponseBody
-    @RequestMapping("cart/clean/{key}/{productId}")
+    @RequestMapping("cart/clean/{productId}")
     ResultBean clean(@CookieValue(name=CookieConstant.USER_CART,required = false)String uuid,
                      HttpServletResponse response,
                      HttpServletRequest request,
-                    @PathVariable(value = "key") String key,
                      @PathVariable(value = "productId") Long productId){
         Object o = request.getAttribute("user");
         if(o!=null){
             //===========已登录状态下的购物车============
             TUser user = (TUser) o;
-            return shopCartService.clean(key,productId);
+            return shopCartService.clean(uuid,productId);
         }
         //===========未登录状态下的购物车===========
         if(uuid!=null&&!"".equals(uuid)){
@@ -87,7 +88,7 @@ public class ShopCartController {
             response.addCookie(cookie);
 
             //删除redis中的购物车
-            return shopCartService.clean(key,productId);
+            return shopCartService.clean(uuid,productId);
         }
         return ResultBean.error("当前用户没有购物车");
     }
@@ -109,10 +110,9 @@ public class ShopCartController {
         return shopCartService.update(uuid,productId,count);
     }
     @ResponseBody
-    @RequestMapping("cart/merge/{noLoginKey}/{loginKey}")
-    ResultBean merge(@PathVariable(value = "noLoginKey") String noLoginKey,
-                     @PathVariable(value = "loginKey") String loginKey,
-                    @CookieValue(name = CookieConstant.USER_CART,required = false)String uuid,
+    @RequestMapping("cart/merge")
+    ResultBean merge(@CookieValue(name=CookieConstant.USER_CART,required = false)String uuid,
+
                      HttpServletRequest request,HttpServletResponse response){
         //获得uuid,和uid
         TUser user = (TUser) request.getAttribute("user");

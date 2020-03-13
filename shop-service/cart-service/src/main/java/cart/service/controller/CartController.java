@@ -19,10 +19,10 @@ public class CartController {
     @Autowired
     private ShopCartService shopCartService;
 
-    @RequestMapping("cart/{key}")
-    ResultBean showCart(@PathVariable(value = "key") String key){
+    @RequestMapping("cart/{uuid}")
+    ResultBean showCart(@PathVariable(value = "uuid") String uuid){
 
-        return shopCartService.showCart(key);
+        return shopCartService.showCart(uuid);
     }
     @RequestMapping("cart/add/{key}/{goodsId}/{count}")
     ResultBean  addProduct(@PathVariable String key,
@@ -32,17 +32,21 @@ public class CartController {
         return shopCartService.addProduct(key,goodsId,count);
     }
     @RequestMapping("cart/clean/{key}/{productId}")
-    ResultBean clean(String key, Long productId){
+    ResultBean clean(@PathVariable String key,
+                     @PathVariable Long productId){
         return shopCartService.clean(key,productId);
     }
 
     @RequestMapping("cart/update/{uuid}/{productId}/{count}")
-    ResultBean update(String uuid, Long productId,Integer count){
+    ResultBean update( @PathVariable String uuid,
+                       @PathVariable Long productId,
+                       @PathVariable Integer count){
         return shopCartService.update(uuid,productId,count);
     }
 
     @RequestMapping("cart/merge/{noLoginKey}/{loginKey}")
-    ResultBean merge(String noLoginKey, String loginKey){
+    ResultBean merge(@PathVariable String noLoginKey,
+                     @PathVariable String loginKey){
         return shopCartService.merge(noLoginKey,loginKey);
     }
 }
