@@ -137,6 +137,8 @@ public class ShopCartServiceImpl implements ShopCartService {
         List<CartItem> newCarts = new ArrayList<>(values);
         redisTemplate.opsForValue().set(loginRedisKey,newCarts);
         return ResultBean.success(newCarts,"合并成功");
+
+
     }
 
 
