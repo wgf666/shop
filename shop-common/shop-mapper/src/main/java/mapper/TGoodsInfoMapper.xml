@@ -43,7 +43,7 @@
     #{goodsPriceOff,jdbcType=DOUBLE}, #{goodsDiscount,jdbcType=DOUBLE}, #{goodsFatherid,jdbcType=INTEGER},
     #{goodsParentid,jdbcType=INTEGER}, #{isdelete,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="entity.TGoodsInfo">
+  <insert id="insertSelective" parameterType="entity.TGoodsInfo" keyProperty="id" useGeneratedKeys="true">
     insert into t_goods_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">

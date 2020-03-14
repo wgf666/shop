@@ -44,4 +44,16 @@ public class GoodsServiceImpl implements GoodsService {
         //批量假删除
         return goodsInfoMapper.delBatch(ids);
     }
+
+    @Override
+    public Integer addGood(TGoodsInfo goodsInfo) {
+        goodsInfo.setIsdelete("否");
+        goodsInfoMapper.insertSelective(goodsInfo);
+        return goodsInfo.getId();
+    }
+
+    @Override
+    public void updateGoods(TGoodsInfo goodsInfo) {
+        goodsInfoMapper.updateByPrimaryKeySelective(goodsInfo);
+    }
 }

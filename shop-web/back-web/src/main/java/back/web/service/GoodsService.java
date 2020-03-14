@@ -22,4 +22,10 @@ public interface GoodsService {
 
     @RequestMapping("delBatch")
     public int delBatch(Integer[] ids);
+
+    @RequestMapping("add")
+    public Integer addGood(TGoodsInfo goodsInfo);
+
+    @RequestMapping("update")
+    public void updateGoods(TGoodsInfo goodsInfo);
 }

@@ -17,4 +17,7 @@ public interface ISearchService {
 
     @RequestMapping("delBatch")
     public void delByIds(Integer[] ids);
+
+    @RequestMapping("update")
+    public void updateById(Integer goodId);
 }

@@ -16,4 +16,8 @@ public interface GoodsService {
     int delById(Integer id);
 
     int delBatch(Integer[] ids);
+
+    Integer addGood(TGoodsInfo goodsInfo);
+
+    void updateGoods(TGoodsInfo goodsInfo);
 }
