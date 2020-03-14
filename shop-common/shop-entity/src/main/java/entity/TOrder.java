@@ -14,7 +14,7 @@ public class TOrder implements Serializable {
 
     private Date oOrderdate;
 
-    private Integer oCheckstate;
+    private String oStatus;
 
     private Date oCheckdate;
 
@@ -68,12 +68,12 @@ public class TOrder implements Serializable {
         this.oOrderdate = oOrderdate;
     }
 
-    public Integer getoCheckstate() {
-        return oCheckstate;
+    public String getoStatus() {
+        return oStatus;
     }
 
-    public void setoCheckstate(Integer oCheckstate) {
-        this.oCheckstate = oCheckstate;
+    public void setoStatus(String oStatus) {
+        this.oStatus = oStatus == null ? null : oStatus.trim();
     }
 
     public Date getoCheckdate() {

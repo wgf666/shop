@@ -17,9 +17,9 @@ zuul:
     connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
     socket-timeout-millis: 60000   #socket超时
   routes:
-    static:
-      path: /**
-      url: http://localhost:8770/**
+#    static:
+#      path: /**
+#      url: http://localhost:8770/**
     index:
       path: /**
       serviceId: index-web
@@ -33,9 +33,9 @@ zuul:
       serviceId: product-web
       stripPrefix: false
     order:
-      path: /order/**
+      path: /order/desc/**
       serviceId: order-web
-#      stripPrefix: false
+      stripPrefix: false
 
     shopcart:
       path: /user/cart/**

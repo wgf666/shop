@@ -112,4 +112,21 @@ public class TGoodsInfo implements Serializable {
     public void setIsdelete(String isdelete) {
         this.isdelete = isdelete == null ? null : isdelete.trim();
     }
+
+    public TGoodsInfo(Integer id, String goodsName, String goodsDescription, String goodsPic, Double goodsPrice, Integer goodsStock, Double goodsPriceOff, Double goodsDiscount, Integer goodsFatherid, Integer goodsParentid, String isdelete) {
+        this.id = id;
+        this.goodsName = goodsName;
+        this.goodsDescription = goodsDescription;
+        this.goodsPic = goodsPic;
+        this.goodsPrice = goodsPrice;
+        this.goodsStock = goodsStock;
+        this.goodsPriceOff = goodsPriceOff;
+        this.goodsDiscount = goodsDiscount;
+        this.goodsFatherid = goodsFatherid;
+        this.goodsParentid = goodsParentid;
+        this.isdelete = isdelete;
+    }
+
+    public TGoodsInfo() {
+    }
 }

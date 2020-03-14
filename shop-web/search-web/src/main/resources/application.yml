@@ -8,6 +8,9 @@ ribbon:
 spring:
   application:
     name: search-web
+  thymeleaf:
+    cache: false
+    mode: LEGANCYHTML5
 
 eureka:
   client:

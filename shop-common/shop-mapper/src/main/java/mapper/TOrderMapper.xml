@@ -7,7 +7,7 @@
     <result column="o_paytype" jdbcType="VARCHAR" property="oPaytype" />
     <result column="o_paycount" jdbcType="DOUBLE" property="oPaycount" />
     <result column="o_orderdate" jdbcType="DATE" property="oOrderdate" />
-    <result column="o_checkstate" jdbcType="INTEGER" property="oCheckstate" />
+    <result column="o_status" jdbcType="VARCHAR" property="oStatus" />
     <result column="o_checkdate" jdbcType="DATE" property="oCheckdate" />
     <result column="o_checkperson" jdbcType="VARCHAR" property="oCheckperson" />
     <result column="userid" jdbcType="INTEGER" property="userid" />
@@ -16,7 +16,7 @@
     <result column="o_shaddress" jdbcType="VARCHAR" property="oShaddress" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, o_sendtype, o_paytype, o_paycount, o_orderdate, o_checkstate, o_checkdate, o_checkperson, 
+    id, o_sendtype, o_paytype, o_paycount, o_orderdate, o_status, o_checkdate, o_checkperson, 
     userid, o_shperson, o_shphone, o_shaddress
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
@@ -31,12 +31,12 @@
   </delete>
   <insert id="insert" parameterType="entity.TOrder">
     insert into t_order (id, o_sendtype, o_paytype, 
-      o_paycount, o_orderdate, o_checkstate, 
+      o_paycount, o_orderdate, o_status, 
       o_checkdate, o_checkperson, userid, 
       o_shperson, o_shphone, o_shaddress
       )
     values (#{id,jdbcType=INTEGER}, #{oSendtype,jdbcType=VARCHAR}, #{oPaytype,jdbcType=VARCHAR}, 
-      #{oPaycount,jdbcType=DOUBLE}, #{oOrderdate,jdbcType=DATE}, #{oCheckstate,jdbcType=INTEGER}, 
+      #{oPaycount,jdbcType=DOUBLE}, #{oOrderdate,jdbcType=DATE}, #{oStatus,jdbcType=VARCHAR}, 
       #{oCheckdate,jdbcType=DATE}, #{oCheckperson,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, 
       #{oShperson,jdbcType=VARCHAR}, #{oShphone,jdbcType=VARCHAR}, #{oShaddress,jdbcType=VARCHAR}
       )
@@ -59,8 +59,8 @@
       <if test="oOrderdate != null">
         o_orderdate,
       </if>
-      <if test="oCheckstate != null">
-        o_checkstate,
+      <if test="oStatus != null">
+        o_status,
       </if>
       <if test="oCheckdate != null">
         o_checkdate,
@@ -97,8 +97,8 @@
       <if test="oOrderdate != null">
         #{oOrderdate,jdbcType=DATE},
       </if>
-      <if test="oCheckstate != null">
-        #{oCheckstate,jdbcType=INTEGER},
+      <if test="oStatus != null">
+        #{oStatus,jdbcType=VARCHAR},
       </if>
       <if test="oCheckdate != null">
         #{oCheckdate,jdbcType=DATE},
@@ -135,8 +135,8 @@
       <if test="oOrderdate != null">
         o_orderdate = #{oOrderdate,jdbcType=DATE},
       </if>
-      <if test="oCheckstate != null">
-        o_checkstate = #{oCheckstate,jdbcType=INTEGER},
+      <if test="oStatus != null">
+        o_status = #{oStatus,jdbcType=VARCHAR},
       </if>
       <if test="oCheckdate != null">
         o_checkdate = #{oCheckdate,jdbcType=DATE},
@@ -165,7 +165,7 @@
       o_paytype = #{oPaytype,jdbcType=VARCHAR},
       o_paycount = #{oPaycount,jdbcType=DOUBLE},
       o_orderdate = #{oOrderdate,jdbcType=DATE},
-      o_checkstate = #{oCheckstate,jdbcType=INTEGER},
+      o_status = #{oStatus,jdbcType=VARCHAR},
       o_checkdate = #{oCheckdate,jdbcType=DATE},
       o_checkperson = #{oCheckperson,jdbcType=VARCHAR},
       userid = #{userid,jdbcType=INTEGER},
