@@ -252,7 +252,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em th:text="${goodsInfo.goodsPrice}" class="J_Price price-now">39.00</em>
+															<em class="J_Price price-now"><span th:text="${goodsInfo.goodsPrice}">39.00</span></em>
 														</div>
 													</div>
 												</li>
@@ -273,7 +273,7 @@
                                             <!--商品总价 -->
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em th:text="${sum * goodsInfo.goodsPrice}" tabindex="0" class="J_ItemSum number">117.00</em>
+													<em tabindex="0" class="J_ItemSum number"><span th:name="total" th:text="${sum * goodsInfo.goodsPrice}">117.00</span></em>
 												</div>
 											</li>
                                             <!--配送方式 -->
@@ -294,16 +294,16 @@
 							</tr>
 							<div class="clear"></div>
                             </div>
-							</div>
+                        </div>
 
 
-							</div>
-							<div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
 
 
 
 
-							<div class="pay-total">
+                    <div class="pay-total">
 						<!--留言-->
 							<div class="order-extra">
 								<div class="order-user-info">
@@ -376,11 +376,11 @@
 
 
 							<!--含运费小计 -->
-							<div class="buy-point-discharge ">
+                    <div class="buy-point-discharge">
 								<p class="price g_price ">
-									合计（含运费） <span>¥</span><em class="pay-sum">244.00</em>
+									合计（含运费） <span>¥</span><em class="pay-sum"><span th:text="20">244.00</span></em>
 								</p>
-							</div>
+                    </div>
 
 							<!--信息 -->
 							<div class="order-go clearfix">
