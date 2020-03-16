@@ -16,6 +16,14 @@
 		<link href="css/jsstyle.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript" src="js/address.js"></script>
+		<script type="text/javascript">
+            $(function () {
+
+                $("#addAddress").click(function () {
+                    $("#addForm").submit();
+                })
+            })
+        </script>
 
 	</head>
 
@@ -72,8 +80,10 @@
 
 			<div class="clear"></div>
 			<div class="concent">
-				<!--地址 -->
+				<!--表单 -->
+                <form id="OrderForm" th:action="${'order/add'}" method="post">
 				<div class="paycont">
+                    <!--地址 -->
 					<div class="address">
 						<h3>确认收货地址 </h3>
 						<div class="control">
@@ -88,17 +98,17 @@
 									<div class="user DefaultAddr">
 
 										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15871145629</span>
+                                            <span class="buy-user">艾迪 </span>
+										    <span class="buy-phone">15871145629</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">洪山</span>区
-										<span class="street">雄楚大道666号(中南财经政法大学)</span>
+								            <span class="province">湖北</span>省
+										    <span class="city">武汉</span>市
+										    <span class="dist">洪山</span>区
+										    <span class="street">雄楚大道666号(中南财经政法大学)</span>
 										</span>
 
 										</span>
@@ -120,6 +130,7 @@
 								</div>
 
 							</li>
+
 							<div class="per-border"></div>
 							<li class="user-addresslist">
 								<div class="address-left">
@@ -377,13 +388,13 @@
 
 							<!--含运费小计 -->
                     <div class="buy-point-discharge">
-								<p class="price g_price ">
-									合计（含运费） <span>¥</span><em class="pay-sum"><span th:text="20">244.00</span></em>
-								</p>
+                        <p class="price g_price ">
+                            合计（含运费） <span>¥</span><em class="pay-sum"><span th:text="20">244.00</span></em>
+                        </p>
                     </div>
 
 							<!--信息 -->
-							<div class="order-go clearfix">
+                    <div class="order-go clearfix">
 								<div class="pay-confirm clearfix">
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
@@ -423,7 +434,7 @@
 								</div>
 							</div>
 						</div>
-
+                </form>
 
 
 
@@ -474,7 +485,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="theme-popover-mask"></div>
+
+
+        <!--地址弹窗 -->
+            <div class="theme-popover-mask"></div>
 			<div class="theme-popover">
 
 				<!--标题 -->
@@ -483,52 +497,54 @@
 				</div>
 				<hr/>
 
+                <!--新增 -->
 				<div class="am-u-md-12">
-					<form class="am-form am-form-horizontal">
+					<form id="addForm" action="address/add" method="post" class="am-form am-form-horizontal">
 
+                        <!--收货人 -->
 						<div class="am-form-group">
 							<label for="user-name" class="am-form-label">收货人</label>
 							<div class="am-form-content">
-								<input type="text" id="user-name" placeholder="收货人">
+								<input type="text" name="shouhuoren" id="user-name" placeholder="收货人">
 							</div>
 						</div>
 
+                        <!--电话 -->
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">手机号码</label>
 							<div class="am-form-content">
-								<input id="user-phone" placeholder="手机号必填" type="email">
+								<input name="phone" id="user-phone" placeholder="手机号必填" type="email">
 							</div>
 						</div>
 
+                        <!--所在地-->
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">所在地</label>
-							<div class="am-form-content address">
-								<select data-am-selected>
-									<option value="a">浙江省</option>
-									<option value="b">湖北省</option>
-								</select>
-								<select data-am-selected>
-									<option value="a">温州市</option>
-									<option value="b">武汉市</option>
-								</select>
-								<select data-am-selected>
-									<option value="a">瑞安区</option>
-									<option value="b">洪山区</option>
-								</select>
+							<div onload="getProvince()" class="am-form-content address">
+                                <select id="province" name="sheng" data-am-selected>
+                                    <option value="1">请选择省</option>
+                                </select>
+                                <select id="city" name="shi" data-am-selected>
+                                    <option value="2">请选择市</option>
+                                </select>
+                                <select id="area" name="qu" data-am-selected>
+                                    <option value="3">请选择区</option>
+                                </select>
 							</div>
 						</div>
 
+                        <!--详细地址-->
 						<div class="am-form-group">
 							<label for="user-intro" class="am-form-label">详细地址</label>
 							<div class="am-form-content">
-								<textarea class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
+								<textarea name="address" class="" rows="3" id="user-intro" placeholder="输入详细地址"></textarea>
 								<small>100字以内写出你的详细地址...</small>
 							</div>
 						</div>
 
 						<div class="am-form-group theme-poptit">
 							<div class="am-u-sm-9 am-u-sm-push-3">
-								<div class="am-btn am-btn-danger">保存</div>
+								<div id="addAddress" class="am-btn am-btn-danger">保存</div>
 								<div class="am-btn am-btn-danger close">取消</div>
 							</div>
 						</div>
@@ -538,6 +554,8 @@
 			</div>
 
 			<div class="clear"></div>
+
+
 	</body>
 
 </html>

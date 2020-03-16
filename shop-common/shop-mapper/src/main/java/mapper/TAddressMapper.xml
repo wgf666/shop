@@ -27,7 +27,7 @@
     address, userid, isdefault
     )
     values (#{id,jdbcType=INTEGER}, #{shouhuoren,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
-    #{address,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, #{isdefault,jdbcType=VARCHAR}
+    #{address,jdbcType=VARCHAR}, #{userid,jdbcType=INTEGER}, '否'
     )
   </insert>
   <insert id="insertSelective" parameterType="entity.TAddress">
@@ -48,9 +48,7 @@
       <if test="userid != null">
         userid,
       </if>
-      <if test="isdefault != null">
-        isdefault,
-      </if>
+        isdefault
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -68,8 +66,8 @@
       <if test="userid != null">
         #{userid,jdbcType=INTEGER},
       </if>
-      <if test="isdefault != null">
-        #{isdefault,jdbcType=VARCHAR},
+      <if test="isdefault == null">
+        '否'
       </if>
     </trim>
   </insert>

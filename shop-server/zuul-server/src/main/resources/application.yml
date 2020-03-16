@@ -6,6 +6,12 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGANCYHTML5
+  resources:
+    chain:
+      cache: false
+      enabled: false
+    cache:
+      period: 1800
 
 eureka:
   client:
@@ -35,6 +41,10 @@ zuul:
     order:
       path: /order/desc/**
       serviceId: order-web
+      stripPrefix: false
+    address:
+      path: /address/add/**
+      serviceId: address-web
       stripPrefix: false
 
     shopcart:

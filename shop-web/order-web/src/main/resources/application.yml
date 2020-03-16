@@ -11,6 +11,12 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGANCYHTML5
+  resources:
+    chain:
+      cache: false
+      enabled: false
+    cache:
+      period: 1800
 
   redis:
     cluster:

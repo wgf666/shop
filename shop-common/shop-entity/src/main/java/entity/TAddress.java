@@ -62,4 +62,16 @@ public class TAddress implements Serializable {
     public void setIsdefault(String isdefault) {
         this.isdefault = isdefault == null ? null : isdefault.trim();
     }
+
+    public TAddress(Integer id, String shouhuoren, String phone, String address, Integer userid, String isdefault) {
+        this.id = id;
+        this.shouhuoren = shouhuoren;
+        this.phone = phone;
+        this.address = address;
+        this.userid = userid;
+        this.isdefault = isdefault;
+    }
+
+    public TAddress() {
+    }
 }

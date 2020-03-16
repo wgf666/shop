@@ -1,5 +1,5 @@
 server:
-  port: 9032
+  port: 9034
 
 ribbon:
   ReadTimeout: 10000
@@ -7,19 +7,12 @@ ribbon:
 
 spring:
   application:
-    name: product-web
+    name: address-web
   thymeleaf:
     cache: false
     mode: LEGANCYHTML5
-  resources:
-    chain:
-      cache: false
-      enabled: true
-    cache:
-      period: 1800
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-

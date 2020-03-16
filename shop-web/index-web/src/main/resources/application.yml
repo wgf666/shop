@@ -17,6 +17,12 @@ spring:
   thymeleaf:
     cache: false
     mode: LEGANCYHTML5
+  resources:
+    chain:
+      cache: false
+      enabled: true
+    cache:
+      period: 1800
 #    cluster:
 #      nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384
 
