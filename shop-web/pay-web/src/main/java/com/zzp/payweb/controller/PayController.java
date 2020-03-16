@@ -44,6 +44,7 @@ public class PayController {
     @RequestMapping("success")
     public String success(Model model, TOrder order){
         model.addAttribute("order",order);
+        System.out.println(order.getId()+","+order.getoShperson());
         return "success";
     }
 
