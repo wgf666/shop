@@ -2,6 +2,7 @@ package back.web.controller;
 
 import com.github.tobato.fastdfs.domain.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
+import entity.MultiResultBean;
 import entity.ResultBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,15 +21,21 @@ import java.io.IOException;
 @Controller
 @RequestMapping("file")
 public class FileController {
-   /* @Autowired
+    @Autowired
     private FastFileStorageClient client;
+
     @Value("${image.server}")
     private String IMAGE_SERVER;
 
+    /**
+     *  文件上传
+     * @param file
+     * @return ResultBean
+     */
     @RequestMapping("upload")
     @ResponseBody
     public ResultBean upload(MultipartFile file){
-        System.out.println(file+"fffffffffff");
+        System.out.println("文件名：  "+file);
         //获取文件名称
         String originalFilename = file.getOriginalFilename();
         String suffix = originalFilename.substring(originalFilename.lastIndexOf("."));
@@ -43,9 +50,14 @@ public class FileController {
             e.printStackTrace();
             return new ResultBean(500,"操作失败，请售后重新上传");
         }
-    }*/
+    }
 
-   /* @ResponseBody
+    /**
+     *  多文件上传
+     * @param files
+     * @return MultiResultBean
+     */
+    @ResponseBody
     @RequestMapping("multiUpload")
     public MultiResultBean multiUpload(MultipartFile[] files){
         MultiResultBean resultBean = new MultiResultBean();
@@ -63,12 +75,12 @@ public class FileController {
                 datas[i] = pathStr;
             } catch (IOException e) {
                 e.printStackTrace();
-                resultBean.setErrno("-1");
+                resultBean.setStatusCode("-1");
                 return resultBean;
             }
         }
-        resultBean.setErrno("0");
+        resultBean.setStatusCode("0");
         resultBean.setData(datas);
         return resultBean;
-    }*/
+    }
 }

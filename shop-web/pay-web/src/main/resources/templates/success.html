@@ -90,7 +90,9 @@
             <div class="option">
                 <span class="info">您可以</span>
                 <a href="user/order.html" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
+                <a th:href="|user/order?orderid=${order.id}&userid=${order.userid}|" href="##" class="J_MakePoint">查看<span>已买到的宝贝</span></a>
                 <a href="user/orderinfo.html" class="J_MakePoint">查看<span>交易详情</span></a>
+                <a th:href="|user/orderinfo?orderid=${order.id}&userid=${order.userid}|" href="##" class="J_MakePoint">查看<span>交易详情</span></a>
             </div>
         </div>
     </div>

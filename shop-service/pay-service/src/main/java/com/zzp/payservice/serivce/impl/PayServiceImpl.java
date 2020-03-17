@@ -33,6 +33,14 @@ public class PayServiceImpl implements PayService{
     @Autowired
     private TOrderDetailMapper orderDetailMapper;
 
+    /**
+     * 使用支付宝支付
+     * @param order
+     * @param orderDetail
+     * @param httpRequest
+     * @param httpResponse
+     * @throws IOException
+     */
     @Override
     public void doPay(TOrder order, TOrderDetail orderDetail, HttpServletRequest httpRequest,HttpServletResponse httpResponse) throws IOException {
         //支付网关  appid   私钥  格式   字符集  支付宝公钥 签名方式
@@ -69,8 +77,20 @@ public class PayServiceImpl implements PayService{
         httpResponse.getWriter().write(form);//直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
+
+        //添加信息到数据库
+        orderMapper.insertSelective(order);
+        orderDetailMapper.insertSelective(orderDetail);
     }
 
+    /**
+     * 返给商家支付信息
+     * @param order
+     * @param request
+     * @param response
+     * @throws AlipayApiException
+     * @throws IOException
+     */
     @Override
     public void notifyUrl(TOrder order,HttpServletRequest request,HttpServletResponse response) throws AlipayApiException, IOException {
         Map<String, String[]> map = request.getParameterMap();
