@@ -2,6 +2,7 @@ package order.web.controller;
 
 import constant.RedisConstant;
 import entity.ResultBean;
+import entity.TAddress;
 import entity.TGoodsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,16 +29,25 @@ public class OrderController {
     public String addOrder(@PathVariable("id") String id, String sum, ModelMap map){
         List<TGoodsInfo> list=new ArrayList<>();
         List<TGoodsInfo> goodsInfoList = (List<TGoodsInfo>) redisTemplate.opsForValue().get(RedisConstant.REDIS_INFO);
+        List<TAddress> addressList = (List<TAddress>) redisTemplate.opsForValue().get(RedisConstant.REDIS_ADDRESS);
         for (TGoodsInfo goodsInfo : goodsInfoList) {
             if(goodsInfo.getId()==Integer.parseInt(id)){
                 list.add(goodsInfo);
             }
         }
 
-        System.out.println(id+"------"+sum);
+        Double goodsPriceOff = list.get(0).getGoodsPriceOff();
+        //System.out.println(id+"------"+sum);
+        map.put("addressList",addressList);
         map.put("list",list);
         map.put("sum",Integer.parseInt(sum));
+        map.put("paysum",Integer.parseInt(sum)*goodsPriceOff);
 
         return "pay";
+    }
+
+    @RequestMapping("add")
+    public String add(){
+        return "";
     }
 }

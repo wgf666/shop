@@ -1,15 +1,10 @@
 package address.service.controller;
 
 import address.service.service.IAddressService;
-import entity.ResultBean;
 import entity.TAddress;
-import mapper.TAddressMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author:吴小富
@@ -30,19 +25,18 @@ public class AddressController {
         addressService.add(address);
     }
 
-    @RequestMapping("del")
+    @RequestMapping("address/del/{id}")
     @ResponseBody
-    public void del(@RequestParam Integer id){
+    public int del(@PathVariable Integer id){
 
         System.out.println(id);
-        //addressService.add(address);
+        return addressService.del(id);
     }
 
-    @RequestMapping("del")
-    @ResponseBody
-    public void defaultById(@RequestParam Integer id){
+    @RequestMapping("address/defaultById/{id}")
+    public void defaultById(@PathVariable Integer id){
 
         System.out.println(id);
-        //addressService.add(address);
+//        addressService.defaultById(id);
     }
 }

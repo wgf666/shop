@@ -13,4 +13,5 @@ public interface RedisConstant {
     String REDIS_INDEX = "index";
     String REDIS_INFO = "info";
     String REDIS_TYPE = "type";
+    String REDIS_ADDRESS = "address";
 }

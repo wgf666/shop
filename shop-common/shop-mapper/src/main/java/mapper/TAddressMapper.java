@@ -1,7 +1,8 @@
 package mapper;
 
-
 import entity.TAddress;
+
+import java.util.List;
 
 public interface TAddressMapper {
     int deleteByPrimaryKey(Integer id);
@@ -15,4 +16,9 @@ public interface TAddressMapper {
     int updateByPrimaryKeySelective(TAddress record);
 
     int updateByPrimaryKey(TAddress record);
+
+    void updateById(Integer id);
+
+    List<TAddress> selectAll();
+
 }

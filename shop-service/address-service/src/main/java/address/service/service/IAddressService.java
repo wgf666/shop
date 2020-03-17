@@ -9,4 +9,8 @@ import entity.TAddress;
 public interface IAddressService {
 
     public void add(TAddress address);
+
+    public int del(Integer id);
+
+    public void defaultById(Integer id);
 }

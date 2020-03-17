@@ -19,8 +19,71 @@
 		<script type="text/javascript">
             $(function () {
 
+                //添加
                 $("#addAddress").click(function () {
-                    $("#addForm").submit();
+                    //alert(1);
+                    $.ajax({
+                        url:"address/add",
+                        type:"POST",
+                        data:$("#addForm").serialize(),
+                        contentType:"application/x-www-form-urlencoded",
+                        dataType:"json",
+                        success:function () {
+                            $('.theme-popover-mask').hide();
+                            $('.theme-popover').slideUp(200);
+                            window.location.reload();
+                        }
+                    })
+                    // $("#addForm").submit();
+                })
+
+                //删除
+                $("a[name='del']").click(function () {
+                    alert($(this).attr("id").split("del"));
+                    $(this).parent().parent().remove();
+                    $.ajax({
+                        url:"address/del"+$(this).attr("id").split("del"),
+                        type:"POST",
+                    })
+                })
+
+                //默认
+                $("a[name='default']").click(function () {
+                    var id=$(this).attr("id").split("def");
+                    $("a[name='default']").attr("class","");
+                    $(this).attr("class","hidden");
+                    $("ins").attr("class","deftip hidden");
+                    $(this).parent().parent().children("div[class='address-left'] ins").attr("class","deftip");
+                    $.ajax({
+                        url:"address/del"+$(this).attr("id").split("del"),
+                        type:"POST",
+                        success:function (data) {
+                            alert(del);
+                        }
+                    })
+                })
+
+                //快递-支付
+                $(".logistics").each(function () {
+                    var i = $(this);
+                    var wgf = i.find("ul").attr("class");
+                    var na;
+                    if(wgf=="pay-list"){
+                        na="oPaytype";
+                    }else{
+                        na="oSendtype";
+                    }
+
+                    var p = i.find("ul>li");
+                    p.click(function () {
+                        if (!!$(this).hasClass("selected")) {
+                            $(this).removeClass("selected");
+                            $(this).attr("name","");
+                        } else {
+                            $(this).addClass("selected").siblings("li").removeClass("selected").attr("name","");
+                            $(this).attr("name",na)
+                        }
+                    })
                 })
             })
         </script>
@@ -91,29 +154,31 @@
 						</div>
 						<div class="clear"></div>
 						<ul>
+<!--                            <div th:each="address:${addressList}">-->
 							<div class="per-border"></div>
-							<li class="user-addresslist defaultAddr">
+							<li th:each="address:${addressList}" class="user-addresslist defaultAddr">
 
 								<div class="address-left">
 									<div class="user DefaultAddr">
 
 										<span class="buy-address-detail">   
-                                            <span class="buy-user">艾迪 </span>
-										    <span class="buy-phone">15871145629</span>
+                                            <span th:text="${address.shouhuoren}" class="buy-user">艾迪 </span>
+										    <span th:text="${address.phone}" class="buy-phone">15871145629</span>
 										</span>
 									</div>
 									<div class="default-address DefaultAddr">
 										<span class="buy-line-title buy-line-title-type">收货地址：</span>
 										<span class="buy--address-detail">
-								            <span class="province">湖北</span>省
-										    <span class="city">武汉</span>市
-										    <span class="dist">洪山</span>区
-										    <span class="street">雄楚大道666号(中南财经政法大学)</span>
+								            <span th:text="${address.province}" class="province">湖北省</span>
+										    <span th:text="${address.city}" class="city">武汉市</span>
+										    <span th:text="${address.area}" class="dist">洪山区</span>
+										    <span th:text="${address.address}" class="street">雄楚大道666号(中南财经政法大学)</span>
 										</span>
 
 										</span>
 									</div>
-									<ins class="deftip">默认地址</ins>
+									<ins th:if="${address.isdefault eq '是'}" class="deftip">默认地址</ins>
+									<ins th:if="${address.isdefault eq '否'}" class="deftip hidden">默认地址</ins>
 								</div>
 								<div class="address-right">
 									<a href="person/address.html">
@@ -122,52 +187,16 @@
 								<div class="clear"></div>
 
 								<div class="new-addr-btn">
-									<a href="#" class="hidden">设为默认</a>
+									<a name="default" th:id="${'def'+address.id}" th:if="${address.isdefault eq '是'}" class="hidden">设为默认</a>
+									<a name="default" th:id="${'def'+address.id}" th:if="${address.isdefault eq '否'}">设为默认</a>
 									<span class="new-addr-bar hidden">|</span>
 									<a href="#">编辑</a>
 									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);" onclick="delClick(this);">删除</a>
+									<a name="del" th:id="${'del'+address.id}">删除</a>
 								</div>
 
 							</li>
-
-							<div class="per-border"></div>
-							<li class="user-addresslist">
-								<div class="address-left">
-									<div class="user DefaultAddr">
-
-										<span class="buy-address-detail">   
-                   <span class="buy-user">艾迪 </span>
-										<span class="buy-phone">15871145629</span>
-										</span>
-									</div>
-									<div class="default-address DefaultAddr">
-										<span class="buy-line-title buy-line-title-type">收货地址：</span>
-										<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
-										<span class="city">武汉</span>市
-										<span class="dist">武昌</span>区
-										<span class="street">东湖路75号众环大厦2栋9层902</span>
-										</span>
-
-										</span>
-									</div>
-									<ins class="deftip hidden">默认地址</ins>
-								</div>
-								<div class="address-right">
-									<span class="am-icon-angle-right am-icon-lg"></span>
-								</div>
-								<div class="clear"></div>
-
-								<div class="new-addr-btn">
-									<a href="#">设为默认</a>
-									<span class="new-addr-bar">|</span>
-									<a href="#">编辑</a>
-									<span class="new-addr-bar">|</span>
-									<a href="javascript:void(0);"  onclick="delClick(this);">删除</a>
-								</div>
-
-							</li>
+<!--                            </div>-->
 
 						</ul>
 
@@ -182,11 +211,11 @@
 					<div class="logistics">
 						<h3>选择物流方式</h3>
 						<ul class="op_express_delivery_hot">
-							<li data-value="yuantong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
-							<li data-value="shentong" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -1008px"></i>申通<span></span></li>
-							<li data-value="yunda" class="OP_LOG_BTN  "><i class="c-gap-right" style="background-position:0px -576px"></i>韵达<span></span></li>
-							<li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last "><i class="c-gap-right" style="background-position:0px -324px"></i>中通<span></span></li>
-							<li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
+							<li data-value="yuantong" class="OP_LOG_BTN  " value="圆通"><i class="c-gap-right" style="background-position:0px -468px"></i>圆通<span></span></li>
+							<li data-value="shentong" class="OP_LOG_BTN  " value="申通"><i class="c-gap-right" style="background-position:0px -1008px"></i>申通<span></span></li>
+							<li data-value="yunda" class="OP_LOG_BTN  " value="韵达"><i class="c-gap-right" style="background-position:0px -576px"></i>韵达<span></span></li>
+							<li data-value="zhongtong" class="OP_LOG_BTN op_express_delivery_hot_last " value="中通"><i class="c-gap-right" style="background-position:0px -324px"></i>中通<span></span></li>
+							<li data-value="shunfeng" class="OP_LOG_BTN  op_express_delivery_hot_bottom" value="顺丰"><i class="c-gap-right" style="background-position:0px -180px"></i>顺丰<span></span></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -197,9 +226,9 @@
 					<div class="logistics">
 						<h3>选择支付方式</h3>
 						<ul class="pay-list">
-							<li class="pay card"><img src="images/wangyin.jpg" />银联<span></span></li>
-							<li class="pay qq"><img src="images/weizhifu.jpg" />微信<span></span></li>
-							<li class="pay taobao"><img src="images/zhifubao.jpg" />支付宝<span></span></li>
+							<li class="pay card" value="银联"><img src="images/wangyin.jpg" />银联<span></span></li>
+							<li class="pay qq" value="微信"><img src="images/weizhifu.jpg" />微信<span></span></li>
+							<li class="pay taobao" value="支付宝"><img src="images/zhifubao.jpg" />支付宝<span></span></li>
 						</ul>
 					</div>
 					<div class="clear"></div>
@@ -239,16 +268,19 @@
 
 									<div class="bundle-main">
 										<ul class="item-content clearfix">
+
 											<div class="pay-phone">
                                                 <!--图片跟标题 -->
 												<li class="td td-item">
 													<div class="item-pic">
 														<a th:href="${'images/'+goodsInfo.goodsPic}" href="#" class="J_MakePoint">
-															<img th:src="${'images/'+goodsInfo.goodsPic}" src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
+															<img name="goodspic" th:src="${'images/'+goodsInfo.goodsPic}" src="images/kouhong.jpg_80x80.jpg" class="itempic J_ItemImg"></a>
 													</div>
 													<div class="item-info">
 														<div class="item-basic-info">
-															<a th:text="${goodsInfo.goodsDescription}" th:href="${'desc/'+goodsInfo.id}" href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
+                                                            <input name="goodsid" th:value="${goodsInfo.id}" />
+                                                            <input name="goodsname" th:value="${goodsInfo.goodsName}" />
+															<a name="goodsDescription" th:text="${goodsInfo.goodsDescription}" th:href="${'desc/'+goodsInfo.id}" href="#" class="item-title J_MakePoint" data-point="tbcart.8.11">美康粉黛醉美唇膏 持久保湿滋润防水不掉色</a>
 														</div>
 													</div>
 												</li>
@@ -263,7 +295,7 @@
 												<li class="td td-price">
 													<div class="item-price price-promo-promo">
 														<div class="price-content">
-															<em class="J_Price price-now"><span th:text="${goodsInfo.goodsPrice}">39.00</span></em>
+															<em class="J_Price price-now"><span name="goodsprice" th:text="${goodsInfo.goodsPrice}">39.00</span></em>
 														</div>
 													</div>
 												</li>
@@ -275,7 +307,7 @@
 														<span class="phone-title">购买数量</span>
 														<div class="sl">
 															<input class="min am-btn" name="" type="button" value="-" />
-															<input class="text_box" name="" type="text" th:value="${sum}" value="3" style="width:30px;" />
+															<input class="text_box" name="goodsnum" type="text" th:value="${sum}" value="3" style="width:30px;" />
 															<input class="add am-btn" name="" type="button" value="+" />
 														</div>
 													</div>
@@ -284,7 +316,7 @@
                                             <!--商品总价 -->
 											<li class="td td-sum">
 												<div class="td-inner">
-													<em tabindex="0" class="J_ItemSum number"><span th:name="total" th:text="${sum * goodsInfo.goodsPrice}">117.00</span></em>
+													<em tabindex="0" class="J_ItemSum number"><span th:name="goodsTotalPrice" th:text="${sum * goodsInfo.goodsPrice}">117.00</span></em>
 												</div>
 											</li>
                                             <!--配送方式 -->
@@ -292,7 +324,7 @@
 												<div class="td-inner">
 													<span class="phone-title">配送方式</span>
 													<div class="pay-logis">
-														快递<b class="sys_item_freprice">10</b>元
+														快递<b class="sys_item_freprice">包邮</b>
 													</div>
 												</div>
 											</li>
@@ -389,7 +421,7 @@
 							<!--含运费小计 -->
                     <div class="buy-point-discharge">
                         <p class="price g_price ">
-                            合计（含运费） <span>¥</span><em class="pay-sum"><span th:text="20">244.00</span></em>
+                            合计（含运费） <span>¥</span><em class="pay-sum"><span th:text="${paysum}">244.00</span></em>
                         </p>
                     </div>
 
@@ -399,7 +431,7 @@
 									<div class="box">
 										<div tabindex="0" id="holyshit267" class="realPay"><em class="t">实付款：</em>
 											<span class="price g_price ">
-                                    <span>¥</span> <em class="style-large-bold-red " id="J_ActualFee">244.00</em>
+                                    <span>¥</span> <em th:text="${paysum}" class="style-large-bold-red " id="J_ActualFee">244.00</em>
 											</span>
 										</div>
 
@@ -408,18 +440,18 @@
 											<p class="buy-footer-address">
 												<span class="buy-line-title buy-line-title-type">寄送至：</span>
 												<span class="buy--address-detail">
-								   <span class="province">湖北</span>省
+								                <span class="province">湖北</span>省
 												<span class="city">武汉</span>市
 												<span class="dist">洪山</span>区
-												<span class="street">雄楚大道666号(中南财经政法大学)</span>
+												<span name="oShaddress" class="street">雄楚大道666号(中南财经政法大学)</span>
 												</span>
 												</span>
 											</p>
 											<p class="buy-footer-address">
 												<span class="buy-line-title">收货人：</span>
-												<span class="buy-address-detail">   
-                                         <span class="buy-user">艾迪 </span>
-												<span class="buy-phone">15871145629</span>
+												<span class="buy-address-detail">
+                                                    <span name="oShperson" class="buy-user">艾迪 </span>
+												    <span name="oShphone" class="buy-phone">15871145629</span>
 												</span>
 											</p>
 										</div>
@@ -499,7 +531,7 @@
 
                 <!--新增 -->
 				<div class="am-u-md-12">
-					<form id="addForm" action="address/add" method="post" class="am-form am-form-horizontal">
+					<form id="addForm" method="post" class="am-form am-form-horizontal">
 
                         <!--收货人 -->
 						<div class="am-form-group">
@@ -521,13 +553,13 @@
 						<div class="am-form-group">
 							<label for="user-phone" class="am-form-label">所在地</label>
 							<div onload="getProvince()" class="am-form-content address">
-                                <select id="province" name="sheng" data-am-selected>
+                                <select id="province" name="province" data-am-selected>
                                     <option value="1">请选择省</option>
                                 </select>
-                                <select id="city" name="shi" data-am-selected>
+                                <select id="city" name="city" data-am-selected>
                                     <option value="2">请选择市</option>
                                 </select>
-                                <select id="area" name="qu" data-am-selected>
+                                <select id="area" name="area" data-am-selected>
                                     <option value="3">请选择区</option>
                                 </select>
 							</div>

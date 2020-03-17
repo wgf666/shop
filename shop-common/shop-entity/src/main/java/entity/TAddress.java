@@ -1,13 +1,17 @@
 package entity;
 
-import java.io.Serializable;
-
-public class TAddress implements Serializable {
+public class TAddress {
     private Integer id;
 
     private String shouhuoren;
 
     private String phone;
+
+    private String province;
+
+    private String city;
+
+    private String area;
 
     private String address;
 
@@ -39,6 +43,30 @@ public class TAddress implements Serializable {
         this.phone = phone == null ? null : phone.trim();
     }
 
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province == null ? null : province.trim();
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
+    }
+
     public String getAddress() {
         return address;
     }
@@ -61,17 +89,5 @@ public class TAddress implements Serializable {
 
     public void setIsdefault(String isdefault) {
         this.isdefault = isdefault == null ? null : isdefault.trim();
-    }
-
-    public TAddress(Integer id, String shouhuoren, String phone, String address, Integer userid, String isdefault) {
-        this.id = id;
-        this.shouhuoren = shouhuoren;
-        this.phone = phone;
-        this.address = address;
-        this.userid = userid;
-        this.isdefault = isdefault;
-    }
-
-    public TAddress() {
     }
 }

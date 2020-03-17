@@ -3011,13 +3011,14 @@ $(document).ready(function () {
     }
 
 
-//地址选择
+//快递-支付选择
     $(function () {
         $(".user-addresslist").click(function () {
             $(this).addClass("defaultAddr").siblings().removeClass("defaultAddr");
         });
         $(".logistics").each(function () {
             var i = $(this);
+            var wgf = i.find("ul").attr("class");
             var p = i.find("ul>li");
             p.click(function () {
                 if (!!$(this).hasClass("selected")) {

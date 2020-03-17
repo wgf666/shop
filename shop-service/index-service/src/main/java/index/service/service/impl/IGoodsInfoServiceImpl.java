@@ -51,27 +51,4 @@ public class IGoodsInfoServiceImpl implements IGoodsInfoService {
             return ResultBean.success(goodsInfoList);
     }
 
-//    public void initSolr(List<TGoodsInfo> goodsInfoList){
-//        List<SolrInputDocument> solrList=new ArrayList<>();
-//        for (TGoodsInfo goodsInfo : goodsInfoList) {
-//            SolrInputDocument document = new SolrInputDocument();
-//            document.setField("id",goodsInfo.getId());
-//            document.setField("t_goods_name",goodsInfo.getGoodsName());
-//            document.setField("t_goods_price_off",goodsInfo.getGoodsPriceOff());
-//            document.setField("t_goods_pic",goodsInfo.getGoodsPic());
-//            document.setField("t_goods_description",goodsInfo.getGoodsDescription());
-//
-//            solrList.add(document);
-//        }
-//
-//        try {
-//            solrClient.add(solrList);
-//            solrClient.commit();
-//        } catch (SolrServerException e) {
-//            e.printStackTrace();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
 }

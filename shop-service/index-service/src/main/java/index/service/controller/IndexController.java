@@ -3,6 +3,7 @@ package index.service.controller;
 import com.google.gson.Gson;
 import constant.CookieConstant;
 import dto.ResultBean;
+import index.service.service.IAddressService;
 import index.service.service.IGoodsInfoService;
 import index.service.service.IGoodsTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,14 @@ public class IndexController {
     @Autowired
     private IGoodsInfoService goodsInfoService;
 
+    @Autowired
+    private IAddressService addressService;
+
     @RequestMapping("index")
     @ResponseBody
     public ResultBean showIndex(){
 
+        addressService.selectAll();
         return goodsTypeService.selectAll();
     }
 

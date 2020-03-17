@@ -4,7 +4,9 @@ import address.web.feign.IAddressService;
 import entity.TAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author:吴小富
@@ -18,25 +20,27 @@ public class AddressController {
     private IAddressService addressService;
 
     @RequestMapping("add")
-    public void add(TAddress address,String sheng,String shi,String qu){
-        address.setAddress(sheng+" "+shi+" "+qu+" "+address.getAddress());
-
+    @ResponseBody
+    public void add(TAddress address){
         address.setUserid(5);
         System.out.println(address.getAddress());
-        addressService.add(address);
+        //return "ad";
+//        addressService.add(address);
     }
 
-    @RequestMapping("del")
-    public void del(Integer id){
+    @RequestMapping("del/{id}")
+    @ResponseBody
+    public int del(@PathVariable Integer id){
 
         System.out.println(id);
-        //addressService.add(address);
+        //return addressService.del(id);
+        return 0;
     }
 
-    @RequestMapping("default")
-    public void defaultById(Integer id){
+    @RequestMapping("default/{id}")
+    public void defaultById(@PathVariable Integer id){
 
         System.out.println(id);
-        //addressService.add(address);
+        //addressService.defaultById(id);
     }
 }
