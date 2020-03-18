@@ -101,6 +101,21 @@ public class GoodsController {
     }
 
     /**
+     *  根据id搜索商品信息
+     *  修改初始化
+     * @param id
+     * @return ResultBean
+     */
+    @RequestMapping("getGoodById")
+    public entity.ResultBean getGoodById(Integer id){
+        TGoodsInfo goodsInfo = goodsService.getGoodById(id);
+        if (goodsInfo!=null){
+            return new entity.ResultBean(200,goodsInfo);
+        }
+        return new entity.ResultBean(500,null);
+    }
+
+    /**
      * 修改商品信息
      * @param goodsInfo
      * @return String
@@ -112,5 +127,6 @@ public class GoodsController {
         searchService.updateById(goodsInfo.getId());
         return "redirect:/goods/page?pageIndex=1&pageSize=5";
     }
+
 
 }

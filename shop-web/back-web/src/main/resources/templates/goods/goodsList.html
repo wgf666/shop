@@ -157,7 +157,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="addProduct">添加</button>
+                <button type="button" class="btn btn-primary" id="addGoods">添加</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -177,66 +177,65 @@
                     <div class="from-group">
                         <label for="upname" class="col-sm-2 control-label">商品名称</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="upname" name="product.name">
+                            <input type="text" class="form-control" id="upname" name="goods.goodsName">
                         </div>
                     </div>
                     <div class="from-group">
-                        <label for="uptypeId" class="col-sm-2 control-label">类型ID</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="uptypeId" name="product.typeId">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="uptypeName" class="col-sm-2 control-label">类型名称</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="uptypeName" name="product.typeName">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upprice" class="col-sm-2 control-label">商品价格</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="upprice" name="product.price">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upsalePrice" class="col-sm-2 control-label">优惠价格</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="upsalePrice" name="product.salePrice">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upstock" class="col-sm-2 control-label">商品库存</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="upstock" name="product.stock">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upsalePoint" class="col-sm-2 control-label">商品卖点</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" id="upsalePoint" name="product.salePoint">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upfile_upload" class="col-sm-2 control-label">图片地址</label>
-                        <div class="col-sm-10">
-                            <input type="file" class="form-control" id="upfile_upload" name="file_upload">
-                            <img src="#" id="upshowImage" style="width: 100px ;height: 100px;">
-                            <input type="hidden"  id="upimage" name="product.image">
-                        </div>
-                    </div>
-                    <div class="from-group">
-                        <label for="upproductDesc" class="col-sm-2 control-label">商品描述</label>
+                        <label for="upgoodsDescription" class="col-sm-2 control-label">商品描述</label>
                         <div class="col-sm-10">
                             <div id="upeditor"></div>
-                            <input type="hidden" id="upproductDesc" name="productDesc">
+                            <input type="hidden" id="upgoodsDescription" name="goods.goodsDescription">
                         </div>
-
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsPic" class="col-sm-2 control-label">图片地址</label>
+                        <div class="col-sm-10">
+                            <input type="file" class="form-control" id="upfile_upload" name="file_upload">
+                            <img src="#" id="upshowImage" style="width: 100px ;height: 100px;display: none">
+                            <input type="hidden"  id="upgoodsPic" name="goods.goodsPic">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsPrice" class="col-sm-2 control-label">商品单价</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsPrice" name="goods.goodsPrice">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsPriceOff" class="col-sm-2 control-label">商品优惠价</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsPriceOff" name="goods.goodsPriceOff">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsDiscount" class="col-sm-2 control-label">折扣</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsDiscount" name="goods.goodsDiscount">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsStock" class="col-sm-2 control-label">商品库存</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsStock" name="goods.goodsStock">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsFatherid" class="col-sm-2 control-label">小类型ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsFatherid" name="goods.goodsFatherid">
+                        </div>
+                    </div>
+                    <div class="from-group">
+                        <label for="upgoodsParentid" class="col-sm-2 control-label">大类型ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="upgoodsParentid" name="goods.goodsParentid">
+                        </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary" id="updateProduct">修改</button>
+                <button type="button" class="btn btn-primary" id="updateGoods">修改</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
@@ -259,7 +258,7 @@
             })
         })
         //添加
-        $("#addProduct").click(function () {
+        $("#addGoods").click(function () {
             $("#productDesc").val(editor.txt.html());
             $("#addForm").submit();
         })
@@ -319,7 +318,7 @@
             var id = $(this).attr("id");
             //通过Ajax获取此商品信息
             $.ajax({
-                url:"product/getProductById/"+id,
+                url:"goods/getGoodById/"+id,
                 type:"POST",
                 success: function (result) {
                     console.log(result.data)
@@ -328,20 +327,19 @@
                         "keyboard":false,
                     })
                     //回填信息
-                    $("#upid").attr("value",result.data.product.id);
-                    $("#upname").attr("value",result.data.product.name);
-                    $("#uptypeId").attr("value",result.data.product.typeId);
-                    $("#uptypeName").attr("value",result.data.product.typeName);
-                    $("#upprice").attr("value",result.data.product.price);
-                    $("#upsalePrice").attr("value",result.data.product.salePrice);
-                    $("#upstock").attr("value",result.data.product.stock);
-                    $("#upsalePoint").attr("value",result.data.product.salePoint);
-                    $("#upshowImage").attr("src",result.data.product.image);
-                    $("#upimage").attr("value",result.data.product.image);
-                    upeditor.txt.html(result.data.productDesc);
-                    $("#upproductDesc").prop("value",result.data.productDesc);
+                    $("#upid").attr("value",result.data.id);
+                    $("#upname").attr("value",result.data.goodsName);
+                    upeditor.txt.html(result.data.goodsDescription);
+                    $("#upgoodsDescription").prop("value",result.data.goodsDescription);
+                    $("#upgoodsPic").attr("value",result.data.goodsPic);
+                    $("#upgoodsPrice").attr("value",result.data.goodsPrice);
+                    $("#upgoodsPriceOff").attr("value",result.data.goodsPriceOff);
+                    $("#upgoodsDiscount").attr("value",result.data.goodsDiscount);
+                    $("#upgoodsStock").attr("value",result.data.goodsStock);
+                    $("#upgoodsFatherid").attr("src",result.data.goodsFatherid);
+                    $("#upgoodsParentid").attr("value",result.data.goodsParentid);
                     //修改
-                    $("#updateProduct").click(function () {
+                    $("#updateGoods").click(function () {
                         $("#upproductDesc").val(upeditor.txt.html());
                         $("#updateForm").submit();
                     })

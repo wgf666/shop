@@ -20,4 +20,6 @@ public interface GoodsService {
     Integer addGood(TGoodsInfo goodsInfo);
 
     void updateGoods(TGoodsInfo goodsInfo);
+
+    TGoodsInfo getGoodById(Integer id);
 }

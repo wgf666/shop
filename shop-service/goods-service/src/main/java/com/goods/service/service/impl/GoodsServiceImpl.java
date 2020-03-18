@@ -56,4 +56,9 @@ public class GoodsServiceImpl implements GoodsService {
     public void updateGoods(TGoodsInfo goodsInfo) {
         goodsInfoMapper.updateByPrimaryKeySelective(goodsInfo);
     }
+
+    @Override
+    public TGoodsInfo getGoodById(Integer id) {
+        return goodsInfoMapper.selectByPrimaryKey(id);
+    }
 }

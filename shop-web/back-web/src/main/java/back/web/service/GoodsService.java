@@ -1,6 +1,5 @@
 package back.web.service;
 
-import com.github.pagehelper.PageInfo;
 import dto.ResultBean;
 import entity.TGoodsInfo;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -28,4 +27,7 @@ public interface GoodsService {
 
     @RequestMapping("update")
     public void updateGoods(TGoodsInfo goodsInfo);
+
+    @RequestMapping("getGoodById")
+    public TGoodsInfo getGoodById(Integer id);
 }

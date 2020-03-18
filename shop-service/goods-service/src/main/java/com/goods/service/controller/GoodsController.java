@@ -47,4 +47,9 @@ public class GoodsController {
     public void updateGoods(TGoodsInfo goodsInfo){
         goodsService.updateGoods(goodsInfo);
     }
+    @RequestMapping("getGoodById")
+    @ResponseBody
+    public TGoodsInfo getGoodById(Integer id){
+        return goodsService.getGoodById(id);
+    }
 }
