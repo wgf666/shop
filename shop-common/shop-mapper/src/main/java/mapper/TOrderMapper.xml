@@ -120,6 +120,79 @@
       </if>
     </trim>
   </insert>
+  <insert id="insertOrder" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="entity.TOrder">
+    insert into t_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oSendtype != null">
+        o_sendtype,
+      </if>
+      <if test="oPaytype != null">
+        o_paytype,
+      </if>
+      <if test="oPaycount != null">
+        o_paycount,
+      </if>
+      <if test="oOrderdate != null">
+        o_orderdate,
+      </if>
+      <if test="oStatus != null">
+        o_status,
+      </if>
+      <if test="oCheckdate != null">
+        o_checkdate,
+      </if>
+      <if test="oCheckperson != null">
+        o_checkperson,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="oShperson != null">
+        o_shperson,
+      </if>
+      <if test="oShphone != null">
+        o_shphone,
+      </if>
+      <if test="oShaddress != null">
+        o_shaddress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oSendtype != null">
+        #{oSendtype,jdbcType=VARCHAR},
+      </if>
+      <if test="oPaytype != null">
+        #{oPaytype,jdbcType=VARCHAR},
+      </if>
+      <if test="oPaycount != null">
+        #{oPaycount,jdbcType=DOUBLE},
+      </if>
+      <if test="oOrderdate != null">
+        #{oOrderdate,jdbcType=DATE},
+      </if>
+      <if test="oStatus != null">
+        #{oStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="oCheckdate != null">
+        #{oCheckdate,jdbcType=DATE},
+      </if>
+      <if test="oCheckperson != null">
+        #{oCheckperson,jdbcType=VARCHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="oShperson != null">
+        #{oShperson,jdbcType=VARCHAR},
+      </if>
+      <if test="oShphone != null">
+        #{oShphone,jdbcType=VARCHAR},
+      </if>
+      <if test="oShaddress != null">
+        #{oShaddress,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
   <update id="updateByPrimaryKeySelective" parameterType="entity.TOrder">
     update t_order
     <set>

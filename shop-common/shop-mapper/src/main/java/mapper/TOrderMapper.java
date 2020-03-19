@@ -7,6 +7,8 @@ public interface TOrderMapper {
 
     int insert(TOrder record);
 
+    int insertOrder(TOrder record);
+
     int insertSelective(TOrder record);
 
     TOrder selectByPrimaryKey(Integer id);

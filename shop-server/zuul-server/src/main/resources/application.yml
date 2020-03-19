@@ -20,8 +20,8 @@ eureka:
 
 zuul:
   host:
-    connect-timeout-millis: 15000 #HTTP连接超时要比Hystrix的大
-    socket-timeout-millis: 60000   #socket超时
+    connect-timeout-millis: 35000 #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 70000   #socket超时
   routes:
 #    static:
 #      path: /**
@@ -42,6 +42,14 @@ zuul:
       path: /order/desc/**
       serviceId: order-web
       stripPrefix: false
+    orderAdd:
+      path: /order/add/**
+      serviceId: order-web
+      stripPrefix: false
+    success:
+      path: /order/success/**
+      serviceId: order-web
+      stripPrefix: false
     address:
       path: /address/add/**
       serviceId: address-web
@@ -57,5 +65,5 @@ zuul:
 
 
 ribbon:
-  ReadTimeout: 10000
-  ConnectTimeout: 10000
+  ReadTimeout: 20000
+  ConnectTimeout: 20000

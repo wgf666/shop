@@ -123,4 +123,22 @@ public class TOrder implements Serializable {
     public void setoShaddress(String oShaddress) {
         this.oShaddress = oShaddress == null ? null : oShaddress.trim();
     }
+
+    public TOrder(Integer id, String oSendtype, String oPaytype, Double oPaycount, Date oOrderdate, String oStatus, Date oCheckdate, String oCheckperson, Integer userid, String oShperson, String oShphone, String oShaddress) {
+        this.id = id;
+        this.oSendtype = oSendtype;
+        this.oPaytype = oPaytype;
+        this.oPaycount = oPaycount;
+        this.oOrderdate = oOrderdate;
+        this.oStatus = oStatus;
+        this.oCheckdate = oCheckdate;
+        this.oCheckperson = oCheckperson;
+        this.userid = userid;
+        this.oShperson = oShperson;
+        this.oShphone = oShphone;
+        this.oShaddress = oShaddress;
+    }
+
+    public TOrder() {
+    }
 }

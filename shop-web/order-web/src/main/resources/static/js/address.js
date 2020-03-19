@@ -2955,42 +2955,54 @@
 $(document).ready(function () {
 
     $(function () {
+
         $(".add").click(function () {
-            var t = $(this).parent().find('input[class*=text_box]');
+            var count = $(this).parent().find('input[class*=text_box]');
             var price = $(this).parent().parent().parent().parent().parent().find('div>.price-content em span');
             var total = $(this).parent().parent().parent().parent().parent().find('li>.td-inner em span');
-            var all=0;
+            var all=0.00;
+            var num=parseInt(count.val());
+            count.val(num+1);
             //alert(count.text());
-            total.text(parseInt(total.text()) + parseInt(price.text()));
-            t.val(parseInt(t.val()) + 1)
+            total.text((parseFloat(price.text())*(num+1)).toFixed(2));
 
-            $("span[name='total']").each(function () {
-                all=parseInt($(this).text())+all;
+            $("span[name='goodsTotalPrice']").each(function () {
+                all=parseFloat($(this).text()).toFixed(2)+all;
             })
-            $("div[class='buy-point-discharge'] p em span").text(all);
+            $(".pay-sum").text(parseFloat(all).toFixed(2));
+            $("#J_ActualFee").text(parseFloat(all).toFixed(2));
+            $("input[name='oPaycount']").val(parseFloat(all).toFixed(2));
+            $("input[name='goodsTotalPrice']").val(parseFloat(all).toFixed(2));
         })
         $(".min").click(function () {
-            var t = $(this).parent().find('input[class*=text_box]');
+            var count = $(this).parent().find('input[class*=text_box]');
             var price = $(this).parent().parent().parent().parent().parent().find('div>.price-content em span');
             var total = $(this).parent().parent().parent().parent().parent().find('li>.td-inner em span');
-            var all=0;
+            var all=0.00;
+            var num=parseInt(count.val());
+            count.val(num-1);
             //alert(count.text());
-            t.val(parseInt(t.val()) - 1)
 
-            if (parseInt(t.val()) < 1) {
-                t.val(1);
+            if (parseInt(count.val()) <= 1) {
+                count.val(1);
                 total.text(price.text());
-                $("span[name='total']").each(function () {
-                    all=parseInt($(this).text())+all;
+                $("span[name='goodsTotalPrice']").each(function () {
+                    all=parseFloat($(this).text()).toFixed(2)+all;
                 })
-                $("div[class='buy-point-discharge'] p em span").text(all);
+                $(".pay-sum").text(parseFloat(all).toFixed(2));
+                $("#J_ActualFee").text(parseFloat(all).toFixed(2));
+                $("input[name='oPaycount']").val(parseFloat(all).toFixed(2));
+                $("input[name='goodsTotalPrice']").val(parseFloat(all).toFixed(2));
                 return;
             }
-            total.text(parseInt(total.text()) - parseInt(price.text()));
-            $("span[name='total']").each(function () {
-                all=parseInt($(this).text())+all;
+            total.text((parseFloat(price.text())*(num-1)).toFixed(2));
+            $("span[name='goodsTotalPrice']").each(function () {
+                all=parseFloat($(this).text()).toFixed(2)+all;
             })
-            $("div[class='buy-point-discharge'] p em span").text(all);
+            $(".pay-sum").text(parseFloat(all).toFixed(2));
+            $("#J_ActualFee").text(parseFloat(all).toFixed(2));
+            $("input[name='oPaycount']").val(parseFloat(all).toFixed(2));
+            $("input[name='goodsTotalPrice']").val(parseFloat(all).toFixed(2));
         })
     })
 
@@ -3012,23 +3024,12 @@ $(document).ready(function () {
 
 
 //快递-支付选择
-    $(function () {
-        $(".user-addresslist").click(function () {
-            $(this).addClass("defaultAddr").siblings().removeClass("defaultAddr");
-        });
-        $(".logistics").each(function () {
-            var i = $(this);
-            var wgf = i.find("ul").attr("class");
-            var p = i.find("ul>li");
-            p.click(function () {
-                if (!!$(this).hasClass("selected")) {
-                    $(this).removeClass("selected");
-                } else {
-                    $(this).addClass("selected").siblings("li").removeClass("selected");
-                }
-            })
-        })
-    });
+    /*$(function () {
+        // $(".user-addresslist").click(function () {
+        //     $(this).addClass("defaultAddr").siblings().removeClass("defaultAddr");
+        // });
+
+    });*/
 
 
 })

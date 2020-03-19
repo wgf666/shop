@@ -14,4 +14,5 @@ public interface TOrderDetailMapper {
     int updateByPrimaryKeySelective(TOrderDetail record);
 
     int updateByPrimaryKey(TOrderDetail record);
+
 }

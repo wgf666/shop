@@ -2,10 +2,12 @@ package index.service.service.impl;
 
 import constant.RedisConstant;
 import dto.ResultBean;
+import entity.TAddress;
 import entity.TGoodsInfo;
 import entity.TGoodsType;
 import index.service.service.IGoodsInfoService;
 import index.service.service.IGoodsTypeService;
+import mapper.TAddressMapper;
 import mapper.TGoodsInfoMapper;
 import mapper.TGoodsTypeMapper;
 import org.apache.solr.client.solrj.SolrClient;
@@ -34,7 +36,7 @@ public class IGoodsInfoServiceImpl implements IGoodsInfoService {
     private RedisTemplate redisTemplate;
 
     @Autowired
-    private SolrClient solrClient;
+    private TAddressMapper addressMapper;
 
     @Override
     public ResultBean selectAll() {
@@ -43,8 +45,6 @@ public class IGoodsInfoServiceImpl implements IGoodsInfoService {
         if(goodsInfoList==null){
             goodsInfoList = goodsInfoMapper.selectAll();
             redisTemplate.opsForValue().set(RedisConstant.REDIS_INFO,goodsInfoList,RedisConstant.SESSION_TIMEOUT, TimeUnit.SECONDS);
-            //初始化solr
-            //new IGoodsInfoServiceImpl().initSolr(goodsInfoList);
 
         }
 

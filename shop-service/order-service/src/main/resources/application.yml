@@ -1,5 +1,5 @@
 server:
-  port: 9033
+  port: 8033
 
 ribbon:
   ReadTimeout: 20000
@@ -7,17 +7,9 @@ ribbon:
 
 spring:
   application:
-    name: order-web
-  thymeleaf:
-    cache: false
-    mode: LEGANCYHTML5
-  resources:
-    chain:
-      cache: false
-      enabled: false
-    cache:
-      period: 1800
-
+    name: order-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop
   redis:
     cluster:
       nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384

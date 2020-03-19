@@ -31,6 +31,7 @@ public class IAddressServiceImpl implements IAddressService {
 
         if(addressList==null){
             addressList = addressMapper.selectAll();
+            System.out.println(addressList);
             redisTemplate.opsForValue().set(RedisConstant.REDIS_ADDRESS,addressList,RedisConstant.SESSION_TIMEOUT, TimeUnit.SECONDS);
         }
     }

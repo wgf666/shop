@@ -24,8 +24,8 @@ public class ProductController {
         TGoodsInfo goodsInfo = productService.desc(infoId);
 
         map.put("goodsInfo",goodsInfo);
-        System.out.println(infoId);
-        System.out.println(goodsInfo);
+        //System.out.println(infoId);
+        //System.out.println(goodsInfo);
         return "introduction";
 //        return null;
     }

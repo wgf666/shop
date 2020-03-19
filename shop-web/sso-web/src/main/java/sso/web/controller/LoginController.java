@@ -22,16 +22,18 @@ import java.util.concurrent.TimeUnit;
 
 
 @Controller
-@CrossOrigin(origins = "*", maxAge = 3600,allowCredentials = "true")
+//@CrossOrigin(origins = "*", maxAge = 3600,allowCredentials = "true")
 public class LoginController {
 
     @Autowired
     private RedisTemplate redisTemplate;
     @Autowired
     private UserService userService;
+
     @RequestMapping("showLogin")
-    public  String showLogin() {
-      return  "login";
+    public String showLogin() {
+        System.out.println(1);
+      return "login";
     }
     //判断账号是否登录成功，如果成功，存入redis和cookie中
     @RequestMapping("checkLogin")

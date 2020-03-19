@@ -1,14 +1,22 @@
 server:
   port: 9001
 
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
+
 spring:
   application:
     name: sso-web
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+  thymeleaf:
+    cache: false
+    mode: LEGANCYHTML5
+  # wgf 的配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop
+  redis:
+    cluster:
+      nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384
 
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/shop?serverTimezone=GMT
@@ -21,12 +29,14 @@ eureka:
 #      pool:
 #        max-active: 20
 
-  # wgf 的配置
-  datasource:
-    url: jdbc:mysql://localhost:3306/shop
-  redis:
-    cluster:
-      nodes: 192.168.116.131:6379,192.168.116.131:6380,192.168.116.131:6381,192.168.116.131:6382,192.168.116.131:6383,192.168.116.131:6384
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+
+
+
 
 
 

@@ -5,6 +5,7 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
+        <base th:href="@{/}">
 		<title>搜索页面</title>
 
 		<link href="AmazeUI-2.4.2/assets/css/amazeui.css" rel="stylesheet" type="text/css" />
@@ -74,10 +75,10 @@
 					   <div class="long-title"><span class="all-goods">全部分类</span></div>
 					   <div class="nav-cont">
 							<ul>
-								<li class="index"><a href="#">首页</a></li>
-                                <li class="qc"><a href="#">闪购</a></li>
-                                <li class="qc"><a href="#">限时抢</a></li>
-                                <li class="qc"><a href="#">团购</a></li>
+								<li class="index"><a href="/">首页</a></li>
+                                <li class="qc"><a href="/">闪购</a></li>
+                                <li class="qc"><a href="/">限时抢</a></li>
+                                <li class="qc"><a href="/">团购</a></li>
                                 <li class="qc last"><a href="#">大包装</a></li>
 							</ul>
 						    <div class="nav-extra">
@@ -168,8 +169,8 @@
 								<ul class="am-avg-sm-2 am-avg-md-3 am-avg-lg-4 boxes">
 
 
-									<li th:each="good:${goodsInfo}">
-										<div class="i-pic limit">
+									<li th:each="good:${goodsInfo}" >
+										<div class="i-pic limit" th:href="${'desc/'+good.id}">
 											<img th:src="${'images/'+good.goodsPic}" src="images/imgsearch1.jpg" />
 											<p class="title fl" th:utext="${good.goodsName+'<br/>'+good.goodsDescription}">【良品铺子旗舰店】手剥松子218g 坚果炒货零食新货巴西松子包邮</p>
 											<p class="price fl">

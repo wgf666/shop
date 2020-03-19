@@ -103,4 +103,20 @@ public class TOrderDetail implements Serializable {
     public void setGoodsTotalPrice(Double goodsTotalPrice) {
         this.goodsTotalPrice = goodsTotalPrice;
     }
+
+    public TOrderDetail(Integer id, Date goodsDate, Integer oOrderid, Integer goodsid, String goodsname, Double goodsprice, String goodsDescription, Integer goodsnum, String goodspic, Double goodsTotalPrice) {
+        this.id = id;
+        this.goodsDate = goodsDate;
+        this.oOrderid = oOrderid;
+        this.goodsid = goodsid;
+        this.goodsname = goodsname;
+        this.goodsprice = goodsprice;
+        this.goodsDescription = goodsDescription;
+        this.goodsnum = goodsnum;
+        this.goodspic = goodspic;
+        this.goodsTotalPrice = goodsTotalPrice;
+    }
+
+    public TOrderDetail() {
+    }
 }
