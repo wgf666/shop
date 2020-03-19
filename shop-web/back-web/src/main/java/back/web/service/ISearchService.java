@@ -1,5 +1,6 @@
 package back.web.service;
 
+import entity.TGoodsInfo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,5 +20,5 @@ public interface ISearchService {
     public void delByIds(Integer[] ids);
 
     @RequestMapping("update")
-    public void updateById(Integer goodId);
+    public void updateById(TGoodsInfo goodsInfo);
 }

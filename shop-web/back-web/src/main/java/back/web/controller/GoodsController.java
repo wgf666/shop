@@ -93,8 +93,9 @@ public class GoodsController {
     @RequestMapping("add")
     public String add(TGoodsInfo goodsInfo){
         Integer goodId = goodsService.addGood(goodsInfo);
+        goodsInfo.setId(goodId);
         //搜索索引库
-        searchService.updateById(goodId);
+        searchService.updateById(goodsInfo);
         //生成详情页面
 //        itemService.createHtmlById(goodId);
         return "redirect:/goods/page?pageIndex=1&pageSize=5";
@@ -124,7 +125,7 @@ public class GoodsController {
     public String update(TGoodsInfo goodsInfo){
         goodsService.updateGoods(goodsInfo);
         //更新solr索引库
-        searchService.updateById(goodsInfo.getId());
+        searchService.updateById(goodsInfo);
         return "redirect:/goods/page?pageIndex=1&pageSize=5";
     }
 

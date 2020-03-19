@@ -119,7 +119,42 @@ public class SearchServiceImpl implements ISearchService {
     }
 
     @Override
-    public ResultBean addProduct(Long pid) {
-        return null;
+    public void delById(Integer id) {
+        try {
+            solrClient.deleteById(id.toString());
+            solrClient.commit();
+        } catch (SolrServerException | IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void delByIds(Integer[] ids) {
+        try {
+            for (int i = 0; i < ids.length; i++) {
+                solrClient.deleteById(ids[i].toString());
+            }
+            solrClient.commit();
+        } catch (SolrServerException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void updateById(TGoodsInfo goodsInfo) {
+        SolrInputDocument document = new SolrInputDocument();
+        document.setField("id",goodsInfo.getId());
+        document.setField("t_goods_name",goodsInfo.getGoodsName());
+        document.setField("t_goods_price_off",goodsInfo.getGoodsPriceOff());
+        document.setField("t_goods_pic",goodsInfo.getGoodsPic());
+        document.setField("t_goods_description",goodsInfo.getGoodsDescription());
+        try {
+            solrClient.add(document);
+            solrClient.commit();
+        } catch (SolrServerException | IOException e) {
+            e.printStackTrace();
+        }
     }
 }

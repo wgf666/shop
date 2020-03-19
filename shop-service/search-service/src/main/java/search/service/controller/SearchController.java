@@ -1,6 +1,7 @@
 package search.service.controller;
 
 import dto.ResultBean;
+import entity.TGoodsInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +24,22 @@ public class SearchController {
     @ResponseBody
     public ResultBean searchByKeyword(@RequestParam String keyword){
         return searchService.searchByKeyword(keyword);
+    }
+    @RequestMapping("del")
+    @ResponseBody
+    public void delById(@RequestParam("id") Integer id){
+        searchService.delById(id);
+    }
+
+    @RequestMapping("delBatch")
+    @ResponseBody
+    public void delByIds(Integer[] ids){
+        searchService.delByIds(ids);
+    }
+    //添加与更新都调用update
+    @RequestMapping("update")
+    @ResponseBody
+    public void updateById(TGoodsInfo goodsInfo){
+        searchService.updateById(goodsInfo);
     }
 }
